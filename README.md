@@ -22,19 +22,20 @@ justifíquelo.
 
 
 ## CONTROL DEL ROBOT
-    1. * Completar el modelo cinemático con dinámica básica de los actuadores. Así mismo
-    contemplar las saturaciones en los mismos tanto en velocidad como aceleración.
-    Con todo ello disponer un bloque RobotMovil que tenga las salidas y entradas bien
-    definidas.
 
-    2. * Programe los algoritmos de control a un punto, a una línea, una trayectoria y a una
-    postura para su robot, y muestre simulaciones de su comportamiento.
-    Muestre los resultados de simulación que considere oportunos para poner de
-    manifiesto de forma comparada las propiedades de cada estrategia de control.
+   1. * Completar el modelo cinemático con dinámica básica de los actuadores. Así mismo
+      contemplar las saturaciones en los mismos tanto en velocidad como aceleración.
+      Con todo ello disponer un bloque RobotMovil que tenga las salidas y entradas bien
+      definidas.
 
-    3. * Diseñe una ley de control mediante el algoritmo de Persecución Pura para su robot,
-    de modo que siga una trayectoria senoidal del tipo
-    X=A*t
-    Y= B*sen(w t)
-    Puede tomar los parámetros A, B, y w a su conveniencia para obtener un
-    comportamiento apropiado para su algoritmo.
+   2. * Programe los algoritmos de control a un punto, a una línea, una trayectoria y a una
+      postura para su robot, y muestre simulaciones de su comportamiento.
+      Muestre los resultados de simulación que considere oportunos para poner de
+      manifiesto de forma comparada las propiedades de cada estrategia de control.
+
+   3. * Diseñe una ley de control mediante el algoritmo de Persecución Pura para su robot,
+      de modo que siga una trayectoria senoidal del tipo:
+      X=A*t
+      Y= B*sen(w t)
+      Puede tomar los parámetros A, B, y w a su conveniencia para obtener un
+      comportamiento apropiado para su algoritmo.
