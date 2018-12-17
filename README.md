@@ -1,19 +1,19 @@
 # Synchro_Drive_CyPR
 
-## ANÁLISIS CINEMÁTICO
+## AN�?LISIS CINEM�?TICO
    1. * Obtener el modelo cinemático correspondiente al robot asignado y expresarlo en su
-    forma Jacobiana.
+    forma Jacobiana. [Done]
 
 NOTA: Para simular el robot introducir saturaciones en las actuaciones de la forma
 que considere realista.
 
    2. * Empleando el modelo cinemático directo, obtener las trayectorias de lazo abierto
     del robot con velocidad constante (v o wt) y una actuación oscilatoria senoidal en la
-    variable de dirección (w o w?=Asen(w t) para los robot a b.
+    variable de dirección (w o w?=Asen(w t) para los robot a b. [Done]
 
    3. * Empleando el modelo cinemático inverso (Jacobiana inversa), obtener las señales
     de control necesarias para que el robot describa una trayectoria parabólica genérica
-    (Por ejemplo y=-x*(x-A)).
+    (Por ejemplo y=-x*(x-A)). [Done]
 
 NOTA: Los parámetros A y w sugeridos, puede tomarlos a su conveniencia para
 obtener trayectorias representativas de los apartados propuestos.
