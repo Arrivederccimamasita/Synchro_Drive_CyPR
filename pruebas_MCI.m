@@ -9,7 +9,7 @@
 % Para la simulacion de la actuacion senoidal introducir un tiempo de simulacion grande 
 % (aprox. 30 segundos, aunque depende de la frecuencia que se le meta)
 t_sim=30;
-
+pos_init=[0;0;0];
 % Descripcion de la entrada parabolica.
 x_inc=1;
 A=30;

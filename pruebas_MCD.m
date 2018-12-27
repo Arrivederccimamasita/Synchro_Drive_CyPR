@@ -8,8 +8,10 @@
 
 selection='Seleccione el tipo de trayectoria a implementar:\n 0.Lineal/Curva. \n 1.Senoidal.\n';
 sel=input(selection);
-if (sel >1) 
-    input('Error. Parametro no vÃ¡lido') 
+while (sel >1) 
+    disp('Error. Parametro no válido\n') 
+    selection='Seleccione el tipo de trayectoria a implementar:\n 0.Lineal/Curva. \n 1.Senoidal.\n';
+    sel=input(selection);
 end
 
 % %%%%%%% Posicion inicial del robot %%%%%%%
@@ -29,20 +31,49 @@ tetha_d_sat=[-0.75 0.75];       % Velocidad lineal de 30 cm/seg
 switch(sel)
     % SI SE DESEA QUE EL ROBOT SIGA UNA TRAYECTORIA LINEAL
     case 0
-        tetha_d=0.5;
-        omega=0.01;
+        selection='Asigne velocidad de giro del robot\n';
+        omega=input(selection);
+        if omega>omega_sat(2)
+            omega=omega_sat(2);
+            disp('Valor por encima de la saturación superior. Se asignará el valor máximo posible')
+        elseif omega<omega_sat(1)
+            omega=omega_sat(1);
+            disp('Valor por debajo de la saturación inferior. Se asignará el valor mínimo posible')
+        end
+        
+        selection='Asigne velocidad de rotación de las ruedas\n';
+        tetha_d=input(selection);
+        if tetha_d>tetha_d_sat(2)
+            tetha_d=tetha_d_sat(2);
+            disp('Valor por encima de la saturación superior. Se asignará el valor máximo posible')
+        elseif tetha_d<tetha_d_sat(1)
+            tetha_d=tetha_d_sat(1);
+            disp('Valor por debajo de la saturación inferior. Se asignará el valor mínimo posible')
+        end
         % Para evitar errores, se inicializan a cero el resto de variables
         freq=0; ampl_sin=0;
       
     % SI SE DESEA QUE EL ROBOT SIGA UNA TRAYECTORIA SENOIDAL
     case 1
-        % ParÃ¡metros senoide
-        tetha_d=5;
-        freq=0.25;
-        ampl_sin=2; %Amplitud de la senoide en la direccion
+        % ParÃ¡metros senoides
+        selection='Asigne frecuencia de la senoide\n';
+        freq=input(selection); %Frecuencia de la senoide en la direccion
+        selection='Asigne amplitud de la senoide\n';
+        ampl_sin=input(selection); %Amplitud de la senoide en la direccion
+        
+        selection='Asigne velocidad de rotación de las ruedas\n';
+        tetha_d=input(selection);
+        if tetha_d>tetha_d_sat(2)
+            tetha_d=tetha_d_sat(2);
+            disp('Valor por encima de la saturación superior. Se asignará el valor máximo posible')
+        elseif tetha_d<tetha_d_sat(1)
+            tetha_d=tetha_d_sat(1);
+            disp('Valor por debajo de la saturación inferior. Se asignará el valor mínimo posible')
+        end
         % Para evitar errores, se inicializan a cero el resto de variables
         omega=0;
 end
+
 
 % Se lanza la simulacion
 sim('sl_MCD_sincrono');
