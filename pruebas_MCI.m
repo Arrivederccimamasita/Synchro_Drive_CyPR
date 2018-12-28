@@ -4,12 +4,11 @@
 % jabociano del robot, es decir, del modelo de velocidades del mismo.
 % Se buscará implementar una trayectoria parabolica
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+close all;%clear all;
 % %%%% DEFINICION DEL TIEMPO DE SIMUACION %%%%%
 % Para la simulacion de la actuacion senoidal introducir un tiempo de simulacion grande 
 % (aprox. 30 segundos, aunque depende de la frecuencia que se le meta)
 t_sim=30;
-<<<<<<< HEAD
 % %%%%%%% Posicion inicial del robot %%%%%%%
 pos_init=[0;0;0];
 % %%%%%% Saturacion en velocidades angulares y lineales %%%%%%
@@ -17,9 +16,7 @@ pos_init=[0;0;0];
 omega_sat=[-0.2618 0.2618];     % 15 grados/segundo
 tetha_d_sat=[-0.75 0.75];       % Velocidad lineal de 30 cm/seg
 
-=======
-pos_init=[0;0;0];
->>>>>>> 15972b23b66fa0f6bbd0c4d32e7f6323959e1b34
+
 % Descripcion de la entrada parabolica.
 x_inc=1;
 A=30;
