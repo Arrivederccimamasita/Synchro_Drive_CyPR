@@ -9,6 +9,12 @@
 % Para la simulacion de la actuacion senoidal introducir un tiempo de simulacion grande 
 % (aprox. 30 segundos, aunque depende de la frecuencia que se le meta)
 t_sim=30;
+% %%%%%%% Posicion inicial del robot %%%%%%%
+pos_init=[0;0;0];
+% %%%%%% Saturacion en velocidades angulares y lineales %%%%%%
+% No se gira un volante a mas de 10-15 deg/sec, por tanto, ahí estará la saturación del movimiento
+omega_sat=[-0.2618 0.2618];     % 15 grados/segundo
+tetha_d_sat=[-0.75 0.75];       % Velocidad lineal de 30 cm/seg
 
 % Descripcion de la entrada parabolica.
 x_inc=1;
