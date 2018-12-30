@@ -8,18 +8,19 @@ close all;%clear all;
 % %%%% DEFINICION DEL TIEMPO DE SIMUACION %%%%%
 % Para la simulacion de la actuacion senoidal introducir un tiempo de simulacion grande 
 % (aprox. 30 segundos, aunque depende de la frecuencia que se le meta)
-t_sim=30;
+t_sim=15;
 % %%%%%%% Posicion inicial del robot %%%%%%%
-pos_init=[0;0;0.5404];%El valor de phi ser· el valor del ·ngulo sacado por la arcotangente de la 
+pos_init=[0;0;0.2915];%El valor de phi ser· el valor del ·ngulo sacado por la arcotangente de la 
                       %derivada de la par·bola en t=0
 % %%%%%% Saturacion en velocidades angulares y lineales %%%%%%
 % No se gira un volante a mas de 10-15 deg/sec, por tanto, ah√≠ estar√° la saturaci√≥n del movimiento
-omega_sat=[-0.2618 0.2618];     % 15 grados/segundo
-tetha_d_sat=[-0.75 0.75];       % Velocidad lineal de 30 cm/seg
+omega_sat=[-0.2618/10 0.2618/10];     % 15 grados/segundo
+tetha_d_sat=[-0.75/2 0.75/2];       % Velocidad lineal de 30 cm/seg
 
 
 % Descripcion de la entrada parabolica.
-A=30;
+A=3;
+D=10;
 
 % Se lanza la simulacion
 sim('sl_MCI_sincrono');
@@ -35,6 +36,6 @@ xlabel('Tiempo [s]'); ylabel('Velocidad Radial (rad/s)');
 
 %Comprobamos Resultado
 figure();
-plot(posx_check,posy_check);grid; title(' Movimiento del robot en el plano XY');...
-    xlabel('Coordenada X del movimiento'); ylabel('Coordenada Y del movimiento');...
+plot(posx_check,posy_check,'b',trayec_x,trayec_y,'r');grid; title(' Movimiento del robot en el plano XY');...
+    xlabel('Coordenada X del movimiento (metros)'); ylabel('Coordenada Y del movimiento (metros)');...
     legend('Movimiento del robot','Location','BestOutside');

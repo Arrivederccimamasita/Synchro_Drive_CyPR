@@ -10,8 +10,8 @@ phi_d=in(3);      % Velocidad angular phi
 phi=in(4);      % Ángulo phi
 
 % Jacobiano inverso de velocidades
-jac_inv=[(R*cos(phi))/(R^2*cos(phi)^2+R^2*sin(phi)^2), (R*sin(phi))/(R^2*cos(phi)^2+R^2*sin(phi)^2), 0;
-    0,                                            0, 1];
+jac_inv=[cos(phi)/R, sin(phi)/R, 0;
+                  0,          0, 1];
 
 %Vector de parámetros generalizados
 gen=[x_d y_d phi_d]';

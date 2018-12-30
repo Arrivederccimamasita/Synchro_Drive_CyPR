@@ -1,15 +1,13 @@
 %% MODELO CINEMATICO DIRECTO ROBOT MOVIL SINCRONO
 
-function gener_out=MCD_movil(in)
-    % L/B[m]=0.8 
+function gener_out=MCD_movil(in) 
      R=0.4; %-> Radio de la rueda [m]
 
     
-    tetha_d=in(1);  % Velocidad lineal
-    omega=in(2);    % Velocidad angular
+    tetha_d=in(1);  % Velocidad de desplazamiento
+    omega=in(2);    % Velocidad de rotacion
     phi=in(3);      % Angulo del robot
     
-    % Condiciones iniciales -> Todo a 0, es decir x=0,y=0,phi=0
     % Jacobiano de velocidades
     jac=[R*cos(phi) 0;
          R*sin(phi) 0;

@@ -1,8 +1,8 @@
-%% SCRIPT EMPLEADO PARA REALIZAR PRUEBAS DE LA SIMULACIÃ“N DEL MCD
+%% SCRIPT EMPLEADO PARA REALIZAR PRUEBAS DE LA SIMULACIÓN DEL MCD
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% En el script que sigue se implementarÃ¡ una trayectoria que siga las
+% En el script que sigue se implementará una trayectoria que siga las
 % siguientes premisas:
-% velocidad lineal -> tetha_d (serÃ¡ contante)
+% velocidad lineal -> tetha_d (será contante)
 % velocidad angular -> omega (constante o A*sin(w*t))
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -27,7 +27,7 @@ t_sim=30;
 omega_sat=[-0.2618 0.2618];     % 15 grados/segundo
 tetha_d_sat=[-0.75 0.75];       % Velocidad lineal de 30 cm/seg
 
-% %%%%%%% SELECTION DEL TIPO DE TRAYECTORIA DESEADA %%%%%%%%%%
+% %%%%%%% SELECCION DEL TIPO DE TRAYECTORIA DESEADA %%%%%%%%%%
 switch(sel)
     % SI SE DESEA QUE EL ROBOT SIGA UNA TRAYECTORIA LINEAL
     case 0
@@ -81,7 +81,7 @@ sim('sl_MCD_sincrono');
 % Se grafica el resultado obtenido
 figure();hold on;...
     comet(posx,posy);grid; title(' Movimiento del robot en el plano XY');...
-    xlabel('Coordenada X del movimiento'); ylabel('Coordenada Y del movimiento');...
+    xlabel('Coordenada X del movimiento (metros)'); ylabel('Coordenada Y del movimiento (metros)');...
     legend('Movimiento del robot','Location','BestOutside');
 % Graficamos el vector velocidad en cada pto de la trayectoria
 plot(posx,posy,'LineWidth',2);
