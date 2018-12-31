@@ -1,15 +1,15 @@
-%% SCRIPT EMPLEADO PARA REALIZAR PRUEBAS DE LA SIMULACI�N DEL MCD
+%% SCRIPT EMPLEADO PARA REALIZAR PRUEBAS DE LA SIMULACION DEL MCD
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% En el script que sigue se implementar� una trayectoria que siga las
+% En el script que sigue se implementara una trayectoria que siga las
 % siguientes premisas:
-% velocidad lineal -> tetha_d (ser� contante)
+% velocidad lineal -> tetha_d (sera contante)
 % velocidad angular -> omega (constante o A*sin(w*t))
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 selection='Seleccione el tipo de trayectoria a implementar:\n 0.Lineal/Curva. \n 1.Senoidal.\n';
 sel=input(selection);
 while (sel >1) 
-    disp('Error. Parametro no v�lido\n') 
+    disp('Error. Parametro no valido\n') 
     selection='Seleccione el tipo de trayectoria a implementar:\n 0.Lineal/Curva. \n 1.Senoidal.\n';
     sel=input(selection);
 end
@@ -23,7 +23,7 @@ pos_init=[0;0;0];
 t_sim=30;
 
 % %%%%%% Saturacion en velocidades angulares y lineales %%%%%%
-% No se gira un volante a mas de 10-15 deg/sec, por tanto, ahí estará la saturación del movimiento
+% No se gira un volante a mas de 10-15 deg/sec, por tanto, ahi estara la saturacion del movimiento
 omega_sat=[-0.2618 0.2618];     % 15 grados/segundo
 tetha_d_sat=[-0.75 0.75];       % Velocidad lineal de 30 cm/seg
 
@@ -55,7 +55,7 @@ switch(sel)
       
     % SI SE DESEA QUE EL ROBOT SIGA UNA TRAYECTORIA SENOIDAL
     case 1
-        % Parámetros senoides
+        % Parametros senoides
         selection='Asigne frecuencia de la senoide: ';
         freq=input(selection); %Frecuencia de la senoide en la direccion
         selection='Asigne amplitud de la senoide: ';

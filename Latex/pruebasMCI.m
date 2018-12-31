@@ -1,8 +1,8 @@
-%% PRUEBAS DE SIMULACIÓN DE LA TRAYECTORIA PARABOLICA A PARTIR DEL MCI
+%% PRUEBAS DE SIMULACION DE LA TRAYECTORIA PARABOLICA A PARTIR DEL MCI
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% En el script que sigue se implementará una trayectoria a partir del
+% En el script que sigue se implementara una trayectoria a partir del
 % jabociano del robot, es decir, del modelo de velocidades del mismo.
-% Se buscará implementar una trayectoria parabolica
+% Se buscara implementar una trayectoria parabolica
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 close all;%clear all;
@@ -13,11 +13,11 @@ close all;%clear all;
 t_sim=30;
 
 % %%%%%%% Posicion inicial del robot %%%%%%%
-pos_init=[0;0;0.2915];%El valor de phi ser� el valor del �ngulo sacado por la arcotangente de la 
-                      %derivada de la par�bola en t=0
+pos_init=[0;0;0.2915];%El valor de phi sera el valor del angulo sacado por la arcotangente de la 
+                      %derivada de la parabola en t=0
 
 % %%%%%% Saturacion en velocidades angulares y lineales %%%%%%
-% No se gira un volante a mas de 10-15 deg/sec, por tanto, ahí estará la saturación del movimiento
+% No se gira un volante a mas de 10-15 deg/sec, por tanto, ahi estara la saturacion del movimiento
 omega_sat=[-0.2618/10 0.2618/10];     % 15 grados/segundo
 tetha_d_sat=[-0.75/2 0.75/2];       % Velocidad lineal de 30 cm/seg
 
