@@ -15,14 +15,18 @@ switch (sel)
      tetha_d_sat=[-0.75 0.75];%Velocidad lineal de 30 cm/seg
 
     % punto al que se debe mover
-    x_ref=-3;
-    y_ref=5;
+    selection='Asigne la variable X del punto objetivo: ';
+    x_ref=input(selection);
+    selection='Asigne la variable Y del punto objetivo: ';
+    y_ref=input(selection);
+%     x_ref=-3;
+%     y_ref=5;
 
     % Se lanza la simulacion
     sim('sl_robot_sincrono_control_pto');
 
     % Se grafican resultados
-    plot(posx,posy,x_ref,y_ref,'*','LineWidth',2)
+    plot(posx,posy,x_ref,y_ref,'*','LineWidth',2);grid;
     % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
     case 2
@@ -30,7 +34,7 @@ switch (sel)
     % Posiciones iniciales del integrador
      pos_init=[0;0;0];
     %Tiempo de simulacion
-    tsim=130;
+    tsim=100;
 
     % Añadir saturacion en velocidades angulares y lineales.
     % No se gira un volante a mas de 10-15 deg/sec, por tanto, ahí estará la saturación del movimiento
@@ -46,7 +50,7 @@ switch (sel)
      % Se define la recta para comparar
      y_recta=-(1/b)*(c+a*t);
      % Se grafican resultados
-     figure();plot(posx,posy,t,y_recta,'LineWidth',1);grid;
+     figure();plot(t,y_recta,'r','LineWidth',3);hold on;plot(posx,posy,'b','LineWidth',1);grid;
     % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
     case 3
@@ -55,11 +59,23 @@ switch (sel)
      % SE PODRIA ENTENDER COMO, DANDOLE UNA CIERTA CANDIDAS DE PUNTOS, QUE
      % SIGA LA TRAYECTORIA QUE SIGUE TODOS ELLOS. SIN EMBARGO, EN ESTE
      % CASO, HE CREADO UN GENERADOR DE TRAYECTORIAS SIMPLÓN DE TODO.
-     
+%      Kv=0.5;Ki=0.01;Kh=2;
+%      R=0.4;
+    selection='Seleccione el tipo de trayectoria a implementar:\n 0:Rectilinea. \n 1:Senoidal.\n';
+    sel=input(selection);
+    while (sel >1)
+       disp('Error. Parametro no v�lido\n')
+       selection='Seleccione el tipo de trayectoria a implementar:\n 0.Lineal/Curva. \n 1.Senoidal.\n';
+       sel=input(selection);
+    end
     % Posiciones iniciales del integrador
-     pos_init=[0;0;0];
+    if sel==0
+     pos_init=[0;0;0.0997];
+    else
+     pos_init=[0;0;0.5608];
+    end
     % Tiempo de simulacion
-    tsim=100; 
+    tsim=120; 
     % Tiempo de muestreo
     Tm=0.01;
 
@@ -75,7 +91,7 @@ switch (sel)
      sim('sl_robot_sincrono_control_trayect');
      
      % Se grafican resultados
-     figure();plot(posx,posy,x_tray,y_tray);grid;
+     figure();plot(x_tray,y_tray,'r','LineWidth',2);hold on;plot(posx,posy,'b','LineWidth',1);grid;
      
      % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
      
