@@ -3,6 +3,8 @@ function [out]=generador_tray(in)
     sel=in(2);
     % Se genera una trayectoria senoidal de poca amplitud y frec
     x_ref=t/100;  % Factor de escala
+    
+    % Implementacion de trayectoria a trozos
     if sel==0
         if  t<=30
             y_ref=x_ref/10;

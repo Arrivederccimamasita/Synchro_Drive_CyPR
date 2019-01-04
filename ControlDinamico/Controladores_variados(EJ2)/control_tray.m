@@ -14,13 +14,12 @@ function [out]=control_tray(in)
     Kv=0.5; Ki=0.01;
     Kh=2;
     
-    
     % calculo del error
     err=sqrt((x_tray-x)^2 + (y_tray-y)^2) - dist;
-
     
     % Definicion de la velocidad lineal de referencia
     v_ref=Kv*err + Ki*Tm*err;
+    
     theta_d_ref=v_ref/0.4;
     % Definicion de la velocidad angular de ref
     phi_ref=atan2(y_tray-y,x_tray-x);

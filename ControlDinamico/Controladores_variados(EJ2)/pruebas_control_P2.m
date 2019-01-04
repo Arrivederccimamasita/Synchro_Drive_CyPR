@@ -42,7 +42,11 @@ switch (sel)
      tetha_d_sat=[-0.75 0.75];%Velocidad lineal de 30 cm/seg    
      
      % Definicion de parametros de la recta
-     a=-1; b=1; c=-1; % -> y=x+1
+     disp('Introduzca los parametros de la recta con ec -> ax + by + c = 0');
+     a=input('Parametro A: ');
+     b=input('Parametro B: ');
+     c=input('Parametro C: ');
+     %a=-1; b=1; c=-1; % -> y=x+1
      
      % Se lanza la simulacion
      sim('sl_robot_sincrono_control_linea');
@@ -50,7 +54,8 @@ switch (sel)
      % Se define la recta para comparar
      y_recta=-(1/b)*(c+a*t);
      % Se grafican resultados
-     figure();plot(t,y_recta,'r','LineWidth',3);hold on;plot(posx,posy,'b','LineWidth',1);grid;
+     figure();plot(t,y_recta,'r','LineWidth',3);hold on;plot(posx,posy,'b','LineWidth',1);grid;...
+         legend('Trayectoria referencia','Trayectoria robot','Location','BestOutside');
     % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
     case 3
@@ -64,7 +69,7 @@ switch (sel)
     selection='Seleccione el tipo de trayectoria a implementar:\n 0:Rectilinea. \n 1:Senoidal.\n';
     sel=input(selection);
     while (sel >1)
-       disp('Error. Parametro no v�lido\n')
+       disp('Error. Parametro no valido\n')
        selection='Seleccione el tipo de trayectoria a implementar:\n 0.Lineal/Curva. \n 1.Senoidal.\n';
        sel=input(selection);
     end
