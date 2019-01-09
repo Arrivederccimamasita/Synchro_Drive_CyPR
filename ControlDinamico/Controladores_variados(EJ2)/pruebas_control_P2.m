@@ -134,8 +134,8 @@ switch (sel)
      tetha_d_sat=[-0.75 0.75];%Velocidad lineal de 30 cm/seg  
      
      % Definicion del punto objetivo y su angulo
-     px_ref=15; py_ref=5;
-     ang_ref=pi;
+     px_ref=2; py_ref=14;
+     ang_ref=pi/2;
      
      % Se lanza la simulacion
      sim('sl_robot_sincrono_control_postura');
@@ -146,10 +146,25 @@ switch (sel)
      p1=[px_ref+cos(ang_ref) py_ref+sin(ang_ref)];
      
      % Se grafican resultados
-     figure();hold on
-     plot(posx,posy);grid;
- %    quiver(p0,p1);
-     hold off;
+     figure();
      
+    
+     muestra_Orientacion=100;
+     hold on;
+     j=muestra_Orientacion;
+     for i=1:length(posx)
+         if(j==muestra_Orientacion)
+             u=cos(ang_phi(i));
+             v=1-u^2;
+             quiver(posx(i),posy(i),u,v,'*'); %Ploteo del vector de la velocidad Lineal.
+             j=0;
+             
+         else j=j+1;
+         end
+         
+     end
+     plot(posx,posy,'k');grid;
+hold off;
+ 
      
 end
