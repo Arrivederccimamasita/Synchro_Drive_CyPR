@@ -533,11 +533,16 @@ Será necesario definir el valor de la ganancia de la función de transferencia 
 	\begin{equation}
 	\omega=-K_dd+K_h(\varphi^*-\varphi)
 	\end{equation}
+<<<<<<< HEAD
 	donde $K_d$ es la constante de proporción para el control de la distancia a la que se encuentra el robot de la línea a seguir, $K_h$ la constante de proporción para el control de la orientación respecto a la línea, $\varphi^*$ y $\varphi$ los ángulos de orientación de referencia, calculada como $\varphi^*=atan(\dfrac{-a}{b})$, y actual, y $d$ la distancia del robot a la línea definida como $d=\dfrac{(a,b,c)\cdot(x,y,1)}{\sqrt{a^2+b^2}}$.\\
 	Como se puede apreciar en este tipo de control no se controla la velocidad de desplazamiento pues no es necesario, por lo que se le asigna un valor constante.\\
+=======
+	donde $K_d$ es la constante de proporción para el control de la distancia a la que se encuentra el robot de la línea a seguir, $K_h$ la constante de proporción para el control de la orientación respecto a la línea, $\varphi^*$ y $\varphi$ los ángulos de orientación de referencia, calculada como $\varphi^*=atan(\frac{-a}{b})$, y actual, y $d$ la distancia del robot a la línea definida como $d=\frac{(a,b,c)\cdot(x,y,1)}{\sqrt{a^2+b^2}}$.\\
+	Como se puede apreciar en este tipo de control no se controla la velocidad de desplazamiento pues no es necesario, por lo que se le asigna un valor constante de 0.5 rad/s.\\
+>>>>>>> 634c96a79a7cc97acab55c12809de09fbbf42d84
 	
 	Una vez descrito el funcionamiento del control, implementado en una función de MATLAB donde se han puesto la restricciones de que las líneas siempre avanzarán en X positivo y que no podrán ser verticales para facilitarla implementación del mismo.\\
-	Una vez tenidas en cuenta dichas restricciones, se puede pasar a realizar experimentos que determinen la fiabilidad del control:\\
+	Una vez tenidas en cuenta dichas restricciones, se puede pasar a realizar experimentos que determinen la fiabilidad del control:
 	
 	\begin{itemize}
 		\item \textbf{Recta a seguir con A=2, B=5 y C=3}
@@ -551,6 +556,20 @@ Será necesario definir el valor de la ganancia de la función de transferencia 
 			\includegraphics[width=1\textwidth]{control_linea_1_2}
 			\caption{Velocidades de actuación a lo largo del tiempo de la trayectoria (arriba $\dot{\theta}$ y abajo $\omega$)}
 		\end{figure}
+	Se puede observar como el robot se dirige hacia la recta de referencia de la forma más rápida que es capaz con las saturaciones pertinentes. Se puede comprobar esto también observando las gráficas de las velocidades de actuación, ya que la velocidad de rotación comienza saturada y a los 4 segundos cambia de signo para poder comenzar el seguimiento de la recta de forma suave. El robot no comienza a seguir la trayectoria por el principio de la misma debido a que el punto de ésta que ha de seguir va cambiando a lo largo de la simulación.\\
+	
+	\item \textbf{Recta a seguir con A=0, B=1 y C=-2}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{control_linea_2}
+		\caption{Trayectoria realizada en control de seguimiento de línea}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{control_linea_2_2}
+		\caption{Velocidades de actuación a lo largo del tiempo de la trayectoria (arriba $\dot{\theta}$ y abajo $\omega$)}
+	\end{figure}
+	En este caso se ha optado por hacer el experimento con una linea horizontal. Como se observa el resultado es muy parecido al del experimento anterior, aunque en este caso una vez alcanzada la recta el robot sobrepasa la misma y debe volver a ella. Esto se debe a que el robot llega a dicha recta de referencia con una orientación de casi 90 grados con respecto a la que tiene la trayectoria de 0 grados y, como las variables de actuación se encuentran saturadas, el robot intenta obtener esa orientación pero tarda más de lo debido.
 	\end{itemize}
 	\subsubsection{Control a una trayectoria}
 	\subsubsection{Control a una postura}

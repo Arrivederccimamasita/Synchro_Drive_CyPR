@@ -31,7 +31,7 @@ switch (sel)
     sim('sl_robot_sincrono_control_pto');
 
     % Se grafican resultados
-    plot(posx,posy,x_ref,y_ref,'*','LineWidth',2);xlabel('Posiciï¿½n cartesiana X (m)');ylabel('Posiciï¿½n cartesiana Y (m)');title('Trayectoria de control a punto');grid;
+    plot(posx,posy,x_ref,y_ref,'*','LineWidth',2);xlabel('Posición cartesiana X (m)');ylabel('Posición cartesiana Y (m)');title('Trayectoria de control a punto');grid;
     
     figure% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     subplot(2,1,1);plot(t,theta_d);xlabel('Tiempo (s)');ylabel('Velocidad de desplazamiento (rad/s)');title('Variaciï¿½n de la velocidad angular de desplazamiento a lo largo de la trayectoria');grid;subplot(2,1,2);plot(t,omega);xlabel('Tiempo (s)');ylabel('Velocidad de rotaciï¿½n (rad/s)');title('Variaciï¿½n de la velocidad angular de rotaciï¿½n a lo largo de la trayectoria');grid;
@@ -66,8 +66,9 @@ switch (sel)
      % Se define la recta para comparar
      y_recta=-(1/b)*(c+a*t/10);
      % Se grafican resultados
-     figure();plot(t/10,y_recta,'r','LineWidth',3);hold on;plot(posx,posy,'b','LineWidth',1);axis([0 10 -1 3]);grid;...
-         legend('Trayectoria referencia','Trayectoria robot','Location','BestOutside');
+     figure();plot(t/10,y_recta,'r','LineWidth',3);hold on;plot(posx,posy,'b','LineWidth',1);grid;...
+         legend('Trayectoria referencia','Trayectoria robot','Location','BestOutside');title('Trayectoria de control a línea');...
+         xlabel('Coordenada cartesiana X');ylabel('Coordenada cartesiana Y');
   
     figure% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     subplot(2,1,1);plot(t,theta_d);xlabel('Tiempo (s)');ylabel('Velocidad de desplazamiento (rad/s)');title('Variación de la velocidad angular de desplazamiento a lo largo de la trayectoria');xlim([0 50]);grid;subplot(2,1,2);plot(t,omega);xlabel('Tiempo (s)');ylabel('Velocidad de rotación (rad/s)');title('Variación de la velocidad angular de rotación a lo largo de la trayectoria');xlim([0 50]);grid;
