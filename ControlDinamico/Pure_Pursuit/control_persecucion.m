@@ -12,7 +12,7 @@ function [out]=control_persecucion(in)
     
     kp=2.2;
     kbeta=-0.1;
-    kalf=kp+3.6; 
+    kalf=kbeta+5.8; 
     % Se evita la indeterminacion en omega
     if (t<1e-18) 
         L=0.000001;
