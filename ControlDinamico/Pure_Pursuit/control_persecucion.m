@@ -22,7 +22,7 @@ function [out]=control_persecucion(in)
     % Una vez calculados los errores, se hace control
     v_ref=0.05; %Velocidad robot
     theta_d_ref=v_ref/R;
-    r=(L^2)/(2*e_ang);
+    r=L/(2*e_ang);
 % r=-(L^2)/(2*(x_ref-x));
     %omega=(2*v_ref*sin(e_ang))/L; %Velocidad angular del robot para ir al punto
     %omega=(2*(x_ref-x))/(2*L);
