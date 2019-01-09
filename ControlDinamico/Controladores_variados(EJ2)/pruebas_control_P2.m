@@ -1,4 +1,5 @@
 %% CONTROL ROBOCHITO
+% close all;clear all;
 sel=input('Que tipo de control desea probar:\n1.Control a un punto\n2.Control una linea\n3.Control por una trayectoria definida\n4.Control a una postura\n');
 
 switch (sel)
@@ -52,6 +53,10 @@ switch (sel)
      disp('Introduzca los parametros de la recta con ec -> ax + by + c = 0');
      a=input('Parametro A: ');
      b=input('Parametro B: ');
+     while(b==0)
+         disp('El parámetro B no puede ser nulo. Introduzca otro:');
+         b=input('Parametro B: ');
+     end
      c=input('Parametro C: ');
      %a=-1; b=1; c=-1; % -> y=x+1
      
@@ -59,13 +64,16 @@ switch (sel)
      sim('sl_robot_sincrono_control_linea');
 
      % Se define la recta para comparar
-     y_recta=-(1/b)*(c+a*t);
+     y_recta=-(1/b)*(c+a*t/10);
      % Se grafican resultados
-     figure();plot(t,y_recta,'r','LineWidth',3);hold on;plot(posx,posy,'b','LineWidth',1);grid;...
+     figure();plot(t/10,y_recta,'r','LineWidth',3);hold on;plot(posx,posy,'b','LineWidth',1);axis([0 10 -1 3]);grid;...
          legend('Trayectoria referencia','Trayectoria robot','Location','BestOutside');
-    % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    
-    case 3
+  
+    figure% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    subplot(2,1,1);plot(t,theta_d);xlabel('Tiempo (s)');ylabel('Velocidad de desplazamiento (rad/s)');title('Variación de la velocidad angular de desplazamiento a lo largo de la trayectoria');xlim([0 50]);grid;subplot(2,1,2);plot(t,omega);xlabel('Tiempo (s)');ylabel('Velocidad de rotación (rad/s)');title('Variación de la velocidad angular de rotación a lo largo de la trayectoria');xlim([0 50]);grid;
+%     figure
+%     subplot(2,1,1);plot(t,posx);xlabel('Tiempo (s)');ylabel('Posición cartesiana X (m)');title('Posición cartesiana X frente al tiempo');xlim([0 50]);grid;subplot(2,1,2);plot(t,posy);xlabel('Tiempo (s)');ylabel('Posición cartesiana Y (m)');title('Posición cartesiana Y frente al tiempo');xlim([0 50]);grid;
+     case 3
      % MOVER POR UNA TRAYECTORIA A CIERTA DISTACIA
      % %%%
      % SE PODRIA ENTENDER COMO, DANDOLE UNA CIERTA CANDIDAS DE PUNTOS, QUE

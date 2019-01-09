@@ -165,7 +165,7 @@ Para el modelo cinemático directo en cuestión, sólo se necesita como dato el 
 \end{center}
 
 Como ya vio en las clases de la asignatura, las variables generalizadas son las que dan información sobre el estado del robot, ya que se encuentran en ellas las coordenadas cartesianas \textit{X} e \textit{Y} del plano del centro del robot y el ángulo de giro $\varphi$ con respecto al eje X, como se ha decidido definir en este proyecto.\\
-Así mismo, las variables de actuación son, como dice su nombre, las variables que reflejarán el valor de movimiento de los motores del robot, es decir, del motor encargado del desplazamiento (velocidad lineal, $\dot{\theta}$) y del encargado de la rotación (Velocidad angular, $\omega$).\\
+Así mismo, las variables de actuación son, como dice su nombre, las variables que reflejarán el valor de movimiento de los motores del robot, es decir, del motor encargado del desplazamiento (velocidad angular de desplazamiento, $\dot{\theta}$) y del encargado de la rotación (velocidad angular de rotación, $\omega$).\\
 
 Una vez detectadas las variables del sistema, se deberá definir la relación entre ellas y, de ese modo,obtener la expresión del Jacobiano, es decir, la relación entre la derivada de las variables articulares de salida y de entrada.\\
 En primer lugar, se definirá $v$ como la componente global de velocidad de desplazamiento, por tanto, se calculará como:
@@ -471,10 +471,10 @@ Será necesario definir el valor de la ganancia de la función de transferencia 
 	v^*=K_v\sqrt{((x^*-x)^2+(y^*-y)^2)}	
 	\end{equation}
 	\begin{equation}
-	\omega=K_h(\theta^*-\theta),
+	\omega=K_h(\varphi^*-\varphi),
 	\end{equation}
 	
-	donde $v$ es la velocidad lineal de desplazamiento en control, $K_v$ la constante de proporción que se deberá ajustar, $(x^*,y^*)$ el punto objetivo, $(x,y)$ el punto actual, $\omega$ el valor de velocidad angular de orientación en control, $K_h$ la constante de proporción para la velocidad de rotación que deberá ser siempre mayor que 1, $\theta^*$ el ángulo objetivo en cada momento de la trayectoria para llegar al punto objetivo que se calcula como $\theta^*=atan(\dfrac{y^*-y}{x^*-x})$ y $\theta$ el ángulo de rotación actual.\\
+	donde $v$ es la velocidad lineal de desplazamiento en control, $K_v$ la constante de proporción que se deberá ajustar, $(x^*,y^*)$ el punto objetivo, $(x,y)$ el punto actual, $\omega$ el valor de velocidad angular de orientación en control, $K_h$ la constante de proporción para la velocidad de rotación que deberá ser siempre mayor que 1, $\varphi^*$ el ángulo objetivo en cada momento de la trayectoria para llegar al punto objetivo que se calcula como $\varphi^*=atan(\dfrac{y^*-y}{x^*-x})$ y $\varphi$ el ángulo de rotación actual.\\
 	
 	Dicha ley de control proporcional se ha implementado en una función de MATLAB a la que se le introducen las referencias de posición así como la realimentación de posiciones y orientación actuales, y se le saca las velocidades de desplazamiento y rotación que han de ser aplicadas al robot.\\
 	
@@ -491,18 +491,67 @@ Será necesario definir el valor de la ganancia de la función de transferencia 
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[width=1\textwidth]{control_punto_1_2}
-			\caption{Velocidades a lo largo del tiempo de la trayectoria}
+			\caption{Velocidades a lo largo del tiempo de la trayectoria (arriba $\dot{\theta}$ y abajo $\omega$)}
 		\end{figure}
 		\begin{figure}[h!]
 		\centering
 		\includegraphics[width=1\textwidth]{control_punto_1_3}
 		\caption{Posiciones del robot a lo largo de la trayectoria respecto al tiempo}
 		\end{figure}
+\newpage
 		Como se puede observar, al no encontrarse el robot orientado hacia el punto objetivo en la posición inicial, para llegar al destino deberá realizar un giro aproximadamente 180 grados.\\
-		Se puede observar también como al principio no es capaz de girar rápidamente hacia el objetivo, y esto se debe a la saturación que se ha establecido en la misma pues, como se muestra en la gráfica de velocidades, los primeros 6 segundos, se encuentra girando al máximo de velocidad
-	\end{itemize}
+		Se puede observar también como al principio no es capaz de girar rápidamente hacia el objetivo, y esto se debe a la saturación que se ha establecido en la misma pues, como se muestra en la gráfica de velocidades, los primeros 6 segundos, se encuentra girando al máximo de velocidad. Esto se encuentra también en la gráfica de la posición X frente al tiempo, donde en el segundo 6 el robot empieza a volver al valor de $x^*$ solicitado una vez el robot ya ha conseguido orientarse y no hace falta que le aplique la máxima velocidad de rotación.\\
+		También se puede concluir que el robot se queda en el punto objetivo una vez alcanzado puesto que en las gráficas se puede observar que llega a éste antes de que termine la simulación.
+		
+		\item \textbf{Punto objetivo (0,5) con preorientación}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{control_punto_2}
+			\caption{Trayectoria realizada en control de un punto}
+		\end{figure}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{control_punto_2_2}
+			\caption{Posiciones del robot a lo largo de la trayectoria respecto al tiempo}
+		\end{figure}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{control_punto_2_3}
+			\caption{Velocidades a lo largo del tiempo de la trayectoria (arriba $\dot{\theta}$ y abajo $\omega$)}
+		\end{figure}
 	
-	\subsubsection{Control a una linea}
+	Este caso es igual que el anterior pero habiendo realizado preorientación en la posición inicial hacia el punto objetivo. Es por esto que el robot únicamente deberá seguir una línea recta, puesto que ya se encuentra orientado y únicamente hará falta que actúe la variable de velocidad de desplazamiento $\dot{\theta}$.
+	\end{itemize}
+
+	Se pueden realizar más experimentos pero éstos no dan más información, puesto lo único que hay que tener en cuenta al darle dicho punto es que se ha dejado un tiempo de simulación suficiente para que el robot pueda llegar al objetivo y que con las velocidades máximas implementadas es capaz de hacerlo en dicho tiempo.
+
+	
+	
+	\subsubsection{Control a una línea}
+	En este apartado se va a estudiar el control de seguimiento de una línea por parte del robot. Para ello debemos conocer en primer lugar la recta que se desea seguir, la cual vendrá descrita como $ax+by+c=0$\\
+	Utilizando entonces la ley de control proporcional para el ángulo de orientación, se deberá implementar el control descrito a continuación:
+	\begin{equation}
+	\omega=-K_dd+K_h(\varphi^*-\varphi),
+	\end{equation}
+	donde $K_d$ es la constante de proporción para el control de la distancia a la que se encuentra el robot de la línea a seguir, $K_h$ la constante de proporción para el control de la orientación respecto a la línea, $\varphi^*$ y $\varphi$ los ángulos de orientación de referencia, calculada como $\varphi^*=atan(\frac{-a}{b})$, y actual, y $d$ la distancia del robot a la línea definida como $d=\frac{(a,b,c)\cdot(x,y,1)}{\sqrt{a^2+b^2}}$.\\
+	Como se puede apreciar en este tipo de control no se controla la velocidad de desplazamiento pues no es necesario, por lo que se le asigna un valor constante.\\
+	
+	Una vez descrito el funcionamiento del control, implementado en una función de MATLAB donde se han puesto la restricciones de que las líneas siempre avanzarán en X positivo y que no podrán ser verticales para facilitarla implementación del mismo.\\
+	Una vez tenidas en cuenta dichas restricciones, se puede pasar a realizar experimentos que determinen la fiabilidad del control:\\
+	
+	\begin{itemize}
+		\item \textbf{Recta a seguir con A=2, B=5 y C=3}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{control_linea_1}
+			\caption{Trayectoria realizada en control de seguimiento de línea}
+		\end{figure}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{control_linea_1_2}
+			\caption{Velocidades de actuación a lo largo del tiempo de la trayectoria (arriba $\dot{\theta}$ y abajo $\omega$)}
+		\end{figure}
+	\end{itemize}
 	\subsubsection{Control a una trayectoria}
 	\subsubsection{Control a una postura}
 \subsection{Ley de control \textit{Persecución pura}}
