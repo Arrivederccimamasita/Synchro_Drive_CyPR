@@ -12,9 +12,9 @@ function [out]=control_pto(in)
 % Me los he inventado. Seria interesante sacarle alguna coherencia
 Kv=0.5; 
 Kh=1; % Debe ser siempre mayor que 0    
-
+R=0.4;
 % Suponemos x_ref, y_ref y phi_ref conocidas.
-v_ref=Kv*sqrt((x_ref-x)^2 + (y_ref-y)^2 );
+v_ref=Kv*sqrt((x_ref-x)^2 + (y_ref-y)^2 )/R;
 
 phi_ref=atan2(y_ref-y,x_ref-x);
 omega=Kh*(phi_ref-phi);
