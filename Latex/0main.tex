@@ -289,7 +289,7 @@ Con este código se pueden realizar varios experimentos. Para todos ellos las ca
 	\end{figure}
 
 	\item \textbf{Tercer experimento} \\
-	Ahora se va a realizar el experimento correspondiente a la prueba solicitada para el trabajo donde se ha de administrar una velocidad de desplazamiento constante y una velocidad de rotación con carácter senoidal. Para ello, se ha introducido una velocidad de desplazamiento de 0.5 radianes/segundo y una senoide de 0.05 Hz de frecuencia y 0.2 radianes/segundo de amplitud:
+	Ahora se va a realizar el experimento correspondiente a la prueba solicitada para el trabajo donde se ha de suministrar una velocidad de desplazamiento constante y una velocidad de rotación con carácter senoidal. Para ello, se ha introducido una velocidad de desplazamiento de 0.5 radianes/segundo y una senoide de 0.05 Hz de frecuencia y 0.2 radianes/segundo de amplitud:
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=1\textwidth]{exp_MCD_3_1}
@@ -471,7 +471,7 @@ Será necesario definir el valor de la ganancia de la función de transferencia 
 	v^*=K_v\sqrt{((x^*-x)^2+(y^*-y)^2)}	
 	\end{equation}
 	\begin{equation}
-	\omega=K_h(\varphi^*-\varphi),
+	\omega=K_h(\varphi^*-\varphi)
 	\end{equation}
 	
 	donde $v$ es la velocidad lineal de desplazamiento en control, $K_v$ la constante de proporción que se deberá ajustar, $(x^*,y^*)$ el punto objetivo, $(x,y)$ el punto actual, $\omega$ el valor de velocidad angular de orientación en control, $K_h$ la constante de proporción para la velocidad de rotación que deberá ser siempre mayor que 1, $\varphi^*$ el ángulo objetivo en cada momento de la trayectoria para llegar al punto objetivo que se calcula como $\varphi^*=atan(\dfrac{y^*-y}{x^*-x})$ y $\varphi$ el ángulo de rotación actual.\\
@@ -504,17 +504,17 @@ Será necesario definir el valor de la ganancia de la función de transferencia 
 		También se puede concluir que el robot se queda en el punto objetivo una vez alcanzado puesto que en las gráficas se puede observar que llega a éste antes de que termine la simulación.
 		
 		\item \textbf{Punto objetivo (0,5) con preorientación}
-		\begin{figure}[H]
+		\begin{figure}[h!]
 			\centering
 			\includegraphics[width=1\textwidth]{control_punto_2}
 			\caption{Trayectoria realizada en control de un punto}
 		\end{figure}
-		\begin{figure}[H]
+		\begin{figure}[h!]
 			\centering
 			\includegraphics[width=1\textwidth]{control_punto_2_2}
 			\caption{Posiciones del robot a lo largo de la trayectoria respecto al tiempo}
 		\end{figure}
-		\begin{figure}[H]
+		\begin{figure}[h!]
 			\centering
 			\includegraphics[width=1\textwidth]{control_punto_2_3}
 			\caption{Velocidades a lo largo del tiempo de la trayectoria (arriba $\dot{\theta}$ y abajo $\omega$)}
@@ -531,22 +531,27 @@ Será necesario definir el valor de la ganancia de la función de transferencia 
 	En este apartado se va a estudiar el control de seguimiento de una línea por parte del robot. Para ello debemos conocer en primer lugar la recta que se desea seguir, la cual vendrá descrita como $ax+by+c=0$\\
 	Utilizando entonces la ley de control proporcional para el ángulo de orientación, se deberá implementar el control descrito a continuación:
 	\begin{equation}
-	\omega=-K_dd+K_h(\varphi^*-\varphi),
+	\omega=-K_dd+K_h(\varphi^*-\varphi)
 	\end{equation}
+<<<<<<< HEAD
+	donde $K_d$ es la constante de proporción para el control de la distancia a la que se encuentra el robot de la línea a seguir, $K_h$ la constante de proporción para el control de la orientación respecto a la línea, $\varphi^*$ y $\varphi$ los ángulos de orientación de referencia, calculada como $\varphi^*=atan(\dfrac{-a}{b})$, y actual, y $d$ la distancia del robot a la línea definida como $d=\dfrac{(a,b,c)\cdot(x,y,1)}{\sqrt{a^2+b^2}}$.\\
+	Como se puede apreciar en este tipo de control no se controla la velocidad de desplazamiento pues no es necesario, por lo que se le asigna un valor constante.\\
+=======
 	donde $K_d$ es la constante de proporción para el control de la distancia a la que se encuentra el robot de la línea a seguir, $K_h$ la constante de proporción para el control de la orientación respecto a la línea, $\varphi^*$ y $\varphi$ los ángulos de orientación de referencia, calculada como $\varphi^*=atan(\frac{-a}{b})$, y actual, y $d$ la distancia del robot a la línea definida como $d=\frac{(a,b,c)\cdot(x,y,1)}{\sqrt{a^2+b^2}}$.\\
 	Como se puede apreciar en este tipo de control no se controla la velocidad de desplazamiento pues no es necesario, por lo que se le asigna un valor constante de 0.5 rad/s.\\
+>>>>>>> 634c96a79a7cc97acab55c12809de09fbbf42d84
 	
 	Una vez descrito el funcionamiento del control, implementado en una función de MATLAB donde se han puesto la restricciones de que las líneas siempre avanzarán en X positivo y que no podrán ser verticales para facilitarla implementación del mismo.\\
 	Una vez tenidas en cuenta dichas restricciones, se puede pasar a realizar experimentos que determinen la fiabilidad del control:
 	
 	\begin{itemize}
 		\item \textbf{Recta a seguir con A=2, B=5 y C=3}
-		\begin{figure}[H]
+		\begin{figure}[h!]
 			\centering
 			\includegraphics[width=1\textwidth]{control_linea_1}
 			\caption{Trayectoria realizada en control de seguimiento de línea}
 		\end{figure}
-		\begin{figure}[H]
+		\begin{figure}[h!]
 			\centering
 			\includegraphics[width=1\textwidth]{control_linea_1_2}
 			\caption{Velocidades de actuación a lo largo del tiempo de la trayectoria (arriba $\dot{\theta}$ y abajo $\omega$)}
@@ -570,12 +575,12 @@ Será necesario definir el valor de la ganancia de la función de transferencia 
 	\subsubsection{Control a una postura}
 \subsection{Ley de control \textit{Persecución pura}}
 
-\section{Anexos y conclusiones}
-\subsection{Codigos de programacion}
-\subsubsection{Pruebas del modelo cinematico directo}
-\lstinputlisting[caption = {caption caption caption}]{pruebasMCD.m}
-\newpage
-\subsubsection{Pruebas del modelo cinematico inverso}
-\lstinputlisting[caption = {caption caption caption}]{pruebasMCI.m}
+%\section{Anexos y conclusiones}
+%\subsection{Codigos de programacion}
+%\subsubsection{Pruebas del modelo cinematico directo}
+%\lstinputlisting[caption = {caption caption caption}]{pruebasMCD.m}
+%\newpage
+%\subsubsection{Pruebas del modelo cinematico inverso}
+%\lstinputlisting[caption = {caption caption caption}]{pruebasMCI.m}
 
 \end{document}
