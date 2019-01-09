@@ -455,25 +455,64 @@ El efecto que se produce al haber saturaciones en ambas actuaciones es una combi
 
 \newpage
 \section{Control dinámico}
-En lo que a la implementación de un algoritmo de control dinámico sobre el robot concierne, en primer lugar será necesario complear el modelo añadiendo la dinámica de los actuadores.\\
-Los actuadores del robot será supondrán 3 motores de corriente continua, cuya función de transferencia que relaciona la entrada de tensión del motor con la salida en velocidad del mismo se define del siguiente modo:
+En lo que a la implementación de un algoritmo de control dinámico sobre el robot concierne, en primer lugar será necesario compltear el modelo añadiendo la dinámica de los actuadores.\\
+Los actuadores del robot serán 3 motores de corriente continua, cuya función de transferencia que relaciona la entrada de tensión del motor con la salida en velocidad del mismo se define del siguiente modo:
 \begin{equation}
 	G(s)=\frac{v(s)}{u(s)}=\frac{K}{\tau s+1}
 \end{equation}
-Será necesario definir el valor de la ganancia de la función de transferencia y la constante de tiempo, los cuales se obtendrán experimentalmente y unificarán toda la dinámica del motor, es decir,momento de inercia del motor, coeficiente de friccion viscosa, constante de fuerza contra-electromotriz, etcétera.
+Será necesario definir el valor de la ganancia de la función de transferencia y la constante de tiempo, los cuales se obtendrán experimentalmente y unificarán toda la dinámica del motor, es decir,momento de inercia del motor, coeficiente de fricción viscosa, constante de fuerza contra-electromotriz, etcétera.
 \subsection{Implementación de diversos algoritmos de control}
 	\subsubsection{Control a un punto}
+	En este apartado se va a realizar el control de movimiento a un punto, interesando únicamente que el robot consiga alcanzar dicho objetivo, sin importar orientación y sin restricciones temporales.\\
+	
+	Para comenzar se hablará de la estrategia de control, la cual se basa en la teoría dada en clase con el uso de la ley de control proporcional:\\
+	
+	\begin{equation}
+	v^*=K_v\sqrt{((x^*-x)^2+(y^*-y)^2)}	
+	\end{equation}
+	\begin{equation}
+	\omega=K_h(\theta^*-\theta),
+	\end{equation}
+	
+	donde $v$ es la velocidad lineal de desplazamiento en control, $K_v$ la constante de proporción que se deberá ajustar, $(x^*,y^*)$ el punto objetivo, $(x,y)$ el punto actual, $\omega$ el valor de velocidad angular de orientación en control, $K_h$ la constante de proporción para la velocidad de rotación que deberá ser siempre mayor que 1, $\theta^*$ el ángulo objetivo en cada momento de la trayectoria para llegar al punto objetivo que se calcula como $\theta^*=atan(\dfrac{y^*-y}{x^*-x})$ y $\theta$ el ángulo de rotación actual.\\
+	
+	Dicha ley de control proporcional se ha implementado en una función de MATLAB a la que se le introducen las referencias de posición así como la realimentación de posiciones y orientación actuales, y se le saca las velocidades de desplazamiento y rotación que han de ser aplicadas al robot.\\
+	
+	Para la comprobación de este controlador se ha realizado un script de pruebas donde se pueden introducir los valores de $(x^*,y^*)$ y decidir si el robot, en la posición inicial que parte de (0,0), va a estar orientado hacia el punto objetivo o no, en cuyo caso la variable $\varphi$ valdrá también 0.\\
+	Se mostrarán entonces, a continuación, los resultados obtenidos con la introducción de distintos puntos objetivos:\\
+	\newpage
+	\begin{itemize}
+		\item \textbf{Punto objetivo (0,5) sin preorientación}
+		\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{control_punto_1}
+		\caption{Trayectoria realizada en control de un punto}
+		\end{figure}
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=1\textwidth]{control_punto_1_2}
+			\caption{Velocidades a lo largo del tiempo de la trayectoria}
+		\end{figure}
+		\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{control_punto_1_3}
+		\caption{Posiciones del robot a lo largo de la trayectoria respecto al tiempo}
+		\end{figure}
+		Como se puede observar, al no encontrarse el robot orientado hacia el punto objetivo en la posición inicial, para llegar al destino deberá realizar un giro aproximadamente 180 grados.\\
+		Se puede observar también como al principio no es capaz de girar rápidamente hacia el objetivo, y esto se debe a la saturación que se ha establecido en la misma pues, como se muestra en la gráfica de velocidades, los primeros 6 segundos, se encuentra girando al máximo de velocidad
+	\end{itemize}
+	
 	\subsubsection{Control a una linea}
 	\subsubsection{Control a una trayectoria}
 	\subsubsection{Control a una postura}
 \subsection{Ley de control \textit{Persecución pura}}
 
-%\section{Anexos y conclusiones}
-%\subsection{Codigos de programacion}
-%\subsubsection{Pruebas del modelo cinematico directo}
-%\lstinputlisting[caption = {caption caption caption}]{pruebasMCD.m}
-%\newpage
-%\subsubsection{Pruebas del modelo cinematico inverso}
-%\lstinputlisting[caption = {caption caption caption}]{pruebasMCI.m}
+\section{Anexos y conclusiones}
+\subsection{Codigos de programacion}
+\subsubsection{Pruebas del modelo cinematico directo}
+\lstinputlisting[caption = {caption caption caption}]{pruebasMCD.m}
+\newpage
+\subsubsection{Pruebas del modelo cinematico inverso}
+\lstinputlisting[caption = {caption caption caption}]{pruebasMCI.m}
 
 \end{document}
