@@ -10,7 +10,7 @@ function [out]=control_tray(in)
 
     % Definicion del tiempo muestreo
     Tm=0.01;
-    % Definicion de las contantes del controlador -> HAY QUE ARREGLARLAS
+    % Definicion de las contantes del controlador 
     Kv=0.5; Ki=0.01;
     Kh=2;
     

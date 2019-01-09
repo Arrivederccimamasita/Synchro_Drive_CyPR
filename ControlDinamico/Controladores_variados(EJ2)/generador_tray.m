@@ -1,6 +1,10 @@
 function [out]=generador_tray(in)
     t=in(1);
     sel=in(2);
+    A=in(3:4);
+    B=in(5:6);
+    C=in(7:8);
+
     % Se genera una trayectoria senoidal de poca amplitud y frec
     x_ref=t/100;  % Factor de escala
     
@@ -15,8 +19,18 @@ function [out]=generador_tray(in)
         else
             y_ref=0.0645-x_ref/40;
         end
+
     else
-     y_ref=0.1*sin(2*pi*x_ref);
+         % Interpolacion de ptos con splines
+         % Vector de puntos
+         O=[0;0];
+         P=[O A B C];
+         % Trayectoria a seguir para pasar por los puntos
+         ytray=@(tau) interp1(P(1,:),P(2,:),tau,'spline');   
+         y_ref=ytray(x_ref);
+
+        % Implementacion trayeectoria senoidal
+        %y_ref=0.1*sin(2*pi*x_ref);
     end
     out=[x_ref;y_ref];
 end
