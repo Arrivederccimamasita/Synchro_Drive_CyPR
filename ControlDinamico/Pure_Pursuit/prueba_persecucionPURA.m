@@ -12,13 +12,13 @@ omega_sat=[-0.2618 0.2618];%15 grados/segundo
 tetha_d_sat=[-0.75 0.75];%Velocidad lineal de 30 cm/seg
 
 % Parametros del seno a seguir
-% A=0.2;        % x=A*t
-% B=1.2;        % y=B*sin(wt)
-% w=0.05;
-
 A=0.2;        % x=A*t
 B=1.2;        % y=B*sin(wt)
-w=0.2;
+w=0.08;
+
+% A=0.2;        % x=A*t
+% B=1.2;        % y=B*sin(wt)
+% w=0.2;
 
 % Se lanza la simulacion
 sim('sl_robot_sincrono_persecucion_pura');

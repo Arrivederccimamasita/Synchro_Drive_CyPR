@@ -533,13 +533,8 @@ Será necesario definir el valor de la ganancia de la función de transferencia 
 	\begin{equation}
 	\omega=-K_dd+K_h(\varphi^*-\varphi)
 	\end{equation}
-<<<<<<< HEAD
-	donde $K_d$ es la constante de proporción para el control de la distancia a la que se encuentra el robot de la línea a seguir, $K_h$ la constante de proporción para el control de la orientación respecto a la línea, $\varphi^*$ y $\varphi$ los ángulos de orientación de referencia, calculada como $\varphi^*=atan(\dfrac{-a}{b})$, y actual, y $d$ la distancia del robot a la línea definida como $d=\dfrac{(a,b,c)\cdot(x,y,1)}{\sqrt{a^2+b^2}}$.\\
-	Como se puede apreciar en este tipo de control no se controla la velocidad de desplazamiento pues no es necesario, por lo que se le asigna un valor constante.\\
-=======
 	donde $K_d$ es la constante de proporción para el control de la distancia a la que se encuentra el robot de la línea a seguir, $K_h$ la constante de proporción para el control de la orientación respecto a la línea, $\varphi^*$ y $\varphi$ los ángulos de orientación de referencia, calculada como $\varphi^*=atan(\frac{-a}{b})$, y actual, y $d$ la distancia del robot a la línea definida como $d=\frac{(a,b,c)\cdot(x,y,1)}{\sqrt{a^2+b^2}}$.\\
 	Como se puede apreciar en este tipo de control no se controla la velocidad de desplazamiento pues no es necesario, por lo que se le asigna un valor constante de 0.5 rad/s.\\
->>>>>>> 634c96a79a7cc97acab55c12809de09fbbf42d84
 	
 	Una vez descrito el funcionamiento del control, implementado en una función de MATLAB donde se han puesto la restricciones de que las líneas siempre avanzarán en X positivo y que no podrán ser verticales para facilitarla implementación del mismo.\\
 	Una vez tenidas en cuenta dichas restricciones, se puede pasar a realizar experimentos que determinen la fiabilidad del control:
@@ -573,7 +568,140 @@ Será necesario definir el valor de la ganancia de la función de transferencia 
 	\end{itemize}
 	\subsubsection{Control a una trayectoria}
 	\subsubsection{Control a una postura}
+
+\newpage
+
 \subsection{Ley de control \textit{Persecución pura}}
+Por ultimo, se implementara una ley de control comun en robotica movil, la cual se define como persecucion pura o \textit{Pure Pursuit}. Con esta tecnica se busca un seguimiento de un camino explicito, el cual se encuentra determinado por un generador de trayectorias.\\
+Esta ley de control se ha optado por implementarla, en lugar de buscando la minima distancia entre la recta de la trayectoria y la posicion del robot, realizando un control de postura mezclado con un seguimiento de trayectoria. \\
+Este control de la postura del robot tendra acentuada la ganancia que minimiza el angulo que forma la recta que une la posicion actual del robot con el punto que se obtiene del generador de trayectorias.\\
+En la figura que se muestra a continuacion, la cual contiene la misma notacion que el control a una postura, dicho angulo sera $\alpha$:
+
+\begin{figure}[h!]
+   \centering
+   \includegraphics[width=0.4\textwidth]{postura}
+   \caption{Representacion del angulo y la distancia calculados}
+\end{figure}
+
+Por tanto, matematicamente se calculara como:
+\begin{center}
+$\rho=\sqrt{(y^*-y)^2+(x^*-x)^2}$ \\
+$\alpha=atan\Big(\dfrac{y^*-y}{x^*-x}\Big)-\varphi$ \\
+$\beta=-\varphi-\alpha$
+\end{center}
+
+Las leyes de control que se implementaran a los motores del robot son:
+\begin{center}
+$v=\frac{K_{\rho}\rho}{R}$ \\
+$\omega=K_{\alpha}\alpha + K_{\beta}\beta$
+\end{center}
+
+Para definir los parametros de los controladores, sera necesario asegurarse de un criterio de signos que asegure la estabilidad del sistema en bucle cerrado. Se debe cumplir que: $K_{\rho}>0$,$K_{\beta}<0$ y que $\Big(K_{\alpha}-K_{\rho}\Big)>0$.\\
+Por lo tanto, los parametros que se implementaran en los controladores son:
+\begin{center}
+$K_{\rho}=2.2$\\
+$K_{\beta}=-0.1$\\
+$K_{\alpha}=K_{\beta}+5.8$
+\end{center}
+Como se puede observar, se ha acentuado el valor de la ganancia asociada al angulo $\alpha$. \\
+
+Para verificar el correcto funcionamiento de este controlador, se hara que siga la siguiente senoide:
+\begin{center}
+$x=At=0.2t$\\
+$y=Bsin(\omega t)=1.2*sin(0.2t)$
+\end{center}
+
+A continuacion, se mostraran las graficas que muestran los resultados de dicho experimento
+
+
+Con los valores asignados a los controladores y trayectoria propuesta se presentan los siguientes
+	resultados de simulación.\\ 
+
+
+
+\newpage	
+	\begin{itemize}
+		
+		\item Resultados Persecución de Trayectoria::
+	\begin{center}
+		$A=0.2$    \hspace{0.2cm}   
+		$B=1.2$    \hspace{0.2cm} 
+		$w=0.2$ \\
+	\end{center}
+
+	En primer lugar, se muestra la superposicion de la referencia dinamica y de la posicion del 
+	robot; además de los errores asociados a cada porsicion cartesiana.\\
+
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{PurePursuitSeguimiento_Error}
+		\caption{Referencia Vs Seguimiento}
+	\end{figure}
+
+	Como se observa, en el inicio de las trayectoria, se presenta una variacion en mayor frecuencia
+	en la postura del robot; al estabilizar la velocidad del seguimiento de la trayectoria,
+	el robot continua la tecnica de seguimiento de persecucion pura de la trayectoria de forma estable.\\
+
+	Sobre el error, vemos que tenemos un error mantenido  en la posicion \textit{X}, lo que 
+	nos indica un retraso inebitable, pero lo suficientemente pequeño; y por el el lado del error 
+	en \textit{Y}, se observa un error oscilante, que indica que no se estan alcanzando los valores de la referencia
+	con total exactitud.
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.8\textwidth]{PurePursuitValoresEntrada}
+		\caption{Señales de Control}
+	\end{figure}
+
+	Esta siguiente grafica, muestra las señales de control generadas para la trayectoria exigida
+	a lo largo del tiempo de simulación, en esta se puede comprobrar el trabajo del control en la 
+	dirección de referencia, cuya llegada al regimen permantente coincide  con el cese del cambio 
+	brusco en la orientación del robot; y la referencia lineal en este momento obtiene una señal periodica, 
+	tal y como se podria suponer de una trayectoria de este estilo.\\
+
+	\end{itemize}
+
+
+
+\begin{itemize}
+	\item Resultados Persecución de Trayectoria:
+	\begin{center}
+		$A=0.2$    \hspace{0.2cm}   
+		$B=1.2$    \hspace{0.2cm} 
+		$w=0.08$ \\
+	\end{center}
+
+	La disminucion de la amplitud mejora en gran medida al seguimiento de la trayectoria, para nuestro
+	modelo de robot movil.\\
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.9\textwidth]{PurePursuitSeguimientoFlama_Error}
+		\caption{Referencia Vs Seguimiento}
+	\end{figure}
+
+	Como se puede observar, comprobamos una linealidad en el cambio de de la orientacion y un seguimiento
+	limpio de la la trayectoria, aun asi, y como se comentó anteriormete, existe un retraso asociado a la 
+	velocidad del robot asociada costante en ambos experimentos.
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.5\textwidth]{PurePursuitValoresEntradaFlama}
+		\caption{Señales de Control}
+	\end{figure}
+
+	Como se pudiese esperar, la variacion de la entrada Señal de \textit{Velocidad Lineal} ocupada del control
+	del la velocidad de recorer un seno matematico se equipare con la cosenoidal de esta; a pesar de ello,
+	la variacion de esta es pequieza, lo que puede asumirse a nivel dinamico.\\
+	En un orden de magnitud menor, se encuentra la variacion de la señal de control de la \textit{Velocidad de Dirección}
+	, de forma constante tras un inicio sobreoscilado debido a una posicion de origen no alineada con la trayectoria.\\
+
+
+
+	\end{itemize}
+
+
+
+
 
 %\section{Anexos y conclusiones}
 %\subsection{Codigos de programacion}
