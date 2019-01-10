@@ -169,8 +169,9 @@ switch (sel)
      tetha_d_sat=[-0.75 0.75];%Velocidad lineal de 30 cm/seg  
      
      % Definicion del punto objetivo y su angulo
-     px_ref=2; py_ref=14;
-     ang_ref=pi/2;
+     px_ref=input('Introduzca la coord X del punto objetivo: ');
+     py_ref=input('Introduzca la coord Y del punto objetivo: ');
+     ang_ref=input('Introduzca introduzca la orientación deseada punto objetivo: ');
      
      % Se lanza la simulacion
      sim('sl_robot_sincrono_control_postura');
@@ -182,24 +183,23 @@ switch (sel)
      
      % Se grafican resultados
      figure();
-     
-    
-     muestra_Orientacion=100;
      hold on;
-     j=muestra_Orientacion;
-     for i=1:length(posx)
-         if(j==muestra_Orientacion)
-             u=cos(ang_phi(i));
-             v=1-u^2;
-             quiver(posx(i),posy(i),u,v,'*'); %Ploteo del vector de la velocidad Lineal.
-             j=0;
-             
-         else j=j+1;
-         end
-         
-     end
-     plot(posx,posy,'k');grid;
+
+u=cos(ang_phi(1));
+v=1-u^2;
+quiver(posx(1),posy(1),u,v,'*'); %Ploteo del vector de la velocidad Lineal.
+u=cos(ang_phi(length(posx)));
+v=1-u^2;
+quiver(posx(length(posx)),posy(length(posy)),u,v,'*'); %Ploteo del vector de la velocidad Lineal.
+plot(posx,posy,'k');title('Control de postura');xlabel('Posición cartesiana X');ylabel('Posición cartesiana Y');grid;
+legend('Orientación inicial','Orientación final','Trayectoria','Location','BestOutside');
 hold off;
+
+        figure;subplot(2,1,1);plot(t,theta_d);xlabel('Tiempo (s)');ylabel('Velocidad de desplazamiento (rad/s)');...
+         title('Variación de la velocidad angular de desplazamiento a lo largo de la trayectoria');axis([0 60 0 0.8]);grid;...
+         subplot(2,1,2);plot(t,omega);xlabel('Tiempo (s)');ylabel('Velocidad de rotación (rad/s)');...
+         title('Variación de la velocidad angular de rotación a lo largo de la trayectoria');axis([0 60 -0.05 0.3]);grid;
+ 
  
      
 end

@@ -17,12 +17,12 @@ beta=-phi-alpha+ang_ref; %Para calcular el error en postura final
 
 % Se definen los parametros de los controladores 
 % DEBEN CUMPLIR -> Kv>0 ; Kb<0 y (Ka-Kv)>0
-Kv=1;             % ganancias velocidad lineal
+Kv=0.5;             % ganancias velocidad lineal
 Ka=2; Kb=-1;    % ganancias velocidad angular
 R=0.4;
 % Definicion de las acciones de control
-v_ref=Kv*err_d/R;
+theta_d_ref=Kv*err_d/R;
 omega=Ka*alpha+Kb*beta; %Velocidad angular del robot para ir al punto
 
-out=[v_ref;omega];
+out=[theta_d_ref;omega];
 end

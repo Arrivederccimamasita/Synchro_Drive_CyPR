@@ -603,7 +603,7 @@ Será necesario definir el valor de la ganancia de la función de transferencia 
 		Como se puede observar, en este caso se ha decidido que el robot siga la trayectoria sin separación alguna, al igual que se puede comprobar que se ha realizado el seguimiento de forma exacta, a excepción de los puntos de cambio de pendiente, donde el robot ha realizado un giro más suave y continuo.\\
 		Observando la gráfica de velocidades se puede concluir que el robot ha conseguido realizar dicho seguimiento a una velocidad de desplazamiento constante y, centrándose en la gráfica de $\omega$ se pueden observar los movimientos debidos al cambio de pendiente, cada cual más pequeño debido a que el cambio de pendiente es menor a cada cambio de recta.\\
 		
-		\item \textbf{Trayectoria lineal}
+		\item \textbf{Trayectoria interpolada}
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=1\textwidth]{control_tray_2}
@@ -616,7 +616,6 @@ Será necesario definir el valor de la ganancia de la función de transferencia 
 		\end{figure}
 		En este experimento se puede observar como el robot es capaz de seguir la trayectoria generada a través de la interpolación con spline de 3 puntos.\\
 		Se debe mencionar que a la hora de realizar experimentos con esta herramienta se deben establecer los puntos con valores de X crecientes, ya que en el mismo script se ha definido dicha variable como una fracción del tiempo de simulación, por lo que no podrá volver hacia atrás.\\
-		
 		Si se observa la gráfica de velocidades se puede ver como, en el momento en el que el robot llega al último punto dado para la interpolación, de detiene completamente, tanto en desplazamiento como en rotación.\\
 		
 		Se debe aclarar también que si se desea crea una trayectoria más larga puede suceder que en el tiempo de simulación estipulado no sea capaz de recorrerla, por lo que habría que aumentar el mismo. También se ha de tener en cuenta, junto al tiempo de simulación, que el robot podrá saturar y así no ser capaz de llegar a los puntos.
@@ -624,7 +623,54 @@ Será necesario definir el valor de la ganancia de la función de transferencia 
 	
 	
 	\subsubsection{Control a una postura}
-
+	En este apartado se va a realizar el control a una postura determinada, para el cual se va a necesitar tanto posición como orientación objetivos que se desean alcanzar.\\
+	Además, para este tipo de control se necesitará realizar un cambio de variables, de modo que $\rho=\sqrt{(x^*-x)^2+(y^*-y)^2}$, que será el error en posición; $\alpha=atan2(\frac{y^*-y}{x^*-x})-\varphi$, que será el error cometido desde la orientación actual hasta la orientación que debería poseer para realizar la trayectoria; y $\beta=-\varphi-\alpha+\varphi^*$, que será el error hasta la orientación objetivo.\\
+	
+	Una vez realizados dichos cambios de variable se puede pasar al control, donde se aplicará un control proporcional para la velocidad de desplazamiento y de rotación, tal que, respectivamente:
+	\begin{equation}
+	\dot{\theta}=K_v\rho/R
+	\end{equation} 
+	\begin{equation}
+	\omega=K_{\alpha}\alpha+K_{\beta}\beta,
+	\end{equation} 
+	donde $R$ es el radio de la ruedas del robot y $K_{\alpha}$ junto a $K_{\beta}$ las contantes de proporción que deberán ser ajustadas para la orientación.\\
+	A la hora de dicho ajuste se debe tener en cuenta que para que el control sea estable se necesita que se cumplan las condiciones siguientes:
+	\begin{equation}
+	K_v>0, K_{\beta}<0,K_{\alpha}-K_v>0 
+	\end{equation} 
+	Es por esto que los valores elegidos para dichas constantes han sido $K_v=0.5$, $K_{\beta}=-1$ y $K_{\alpha}=2$.\\
+	
+	Una vez comentado el proceso de diseño de este control se puede comenzar a realizar experimentos. En este caso se han realizado dos experimentos cuyos objetivos son diferentes tanto en posición como en orientación:
+	
+	\begin{itemize}
+		\item \textbf{Control de postura con $x^*=10$, $y^*=-10$ y $\varphi^*=-pi$}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{control_postura_1}
+			\caption{Trayectoria realizada en control de postura}
+		\end{figure}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{control_postura_1_2}
+			\caption{Velocidades de actuación a lo largo del tiempo de la trayectoria (arriba $\dot{\theta}$ y abajo $\omega$)}
+		\end{figure}
+		Como se puede observar, el robot consigue llegar a la orientación pedida en la posición pedida. Para realizar esto, se observa que el robot realiza un giro extraño, lo cual se debe a que el control de velocidad de orientación se realiza en función a la distancia hasta el punto objetivo, mientras que el control de velocidad de desplazamiento se realiza sin tener en cuenta el control de orientación.\\
+		Así pues se observa una saturación en la velocidad de desplazamiento durante la mayor parte del recorrido y a su vez un decremento antes de llegar al mismo, lo que corrobora dicho funcionamiento.
+		
+		\item \textbf{Control de postura con $x^*=5$, $y^*=10$ y $\varphi^*=pi/2$}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{control_postura_2}
+			\caption{Trayectoria realizada en control de postura}
+		\end{figure}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{control_postura_2_2}
+			\caption{Velocidades de actuación a lo largo del tiempo de la trayectoria (arriba $\dot{\theta}$ y abajo $\omega$)}
+		\end{figure}
+		Este experimento resulta más fácil para el robot puesto que la rotación que debe realizar no es tan grande. Se vuelve a observar como el robot consigue llegar a la orientación pedida, aunque durante el resto de la simulación pueda oscilar un poco, siempre buscará estar centrado en dicha orientación.
+	\end{itemize}
+	
 \newpage
 
 \subsection{Ley de control \textit{Persecución pura}}
