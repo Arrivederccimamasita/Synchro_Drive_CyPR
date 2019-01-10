@@ -17,7 +17,7 @@ que considere realista.
 
 NOTA: Los parametros A y w sugeridos, puede tomarlos a su conveniencia para
 obtener trayectorias representativas de los apartados propuestos.
-Asi mismo cualquier otro parÃ¡metro que no estÃ© indicado a su conveniencia y
+Asi mismo cualquier otro parametro que no esta indicado a su conveniencia y
 justifiquelo.
 
 
