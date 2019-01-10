@@ -9,7 +9,6 @@ function [out]=control_pto(in)
     phi=in(5);
     
 %Definicion parametros controlador 
-% Me los he inventado. Seria interesante sacarle alguna coherencia
 Kv=0.5; 
 Kh=1; % Debe ser siempre mayor que 0    
 R=0.4;

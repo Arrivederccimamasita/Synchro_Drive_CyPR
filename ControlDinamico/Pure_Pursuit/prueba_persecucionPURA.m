@@ -14,11 +14,11 @@ tetha_d_sat=[-0.75 0.75];%Velocidad lineal de 30 cm/seg
 % Parametros del seno a seguir
 A=0.2;        % x=A*t
 B=1.2;        % y=B*sin(wt)
-w=0.08;
+w=0.2;
 
 % A=0.2;        % x=A*t
 % B=1.2;        % y=B*sin(wt)
-% w=0.2;
+% w=0.13;
 
 % Se lanza la simulacion
 sim('sl_robot_sincrono_persecucion_pura');
@@ -50,6 +50,6 @@ plot(t,x_tray-posx,t,y_tray-posy,'b','LineWidth',1);xlabel('Tiempo [s]');legend(
 %Graficas vbles de entrada al robot
 figure(2);
 subplot(211);
-plot(t,v_ref,'r'); grid; title('Velocidad Lineal de Referencia')
+plot(t,v_ref,'r'); grid; title('Velocidad Desplazamiento de Referencia')
 subplot(212);
 plot(t,omega,'b');grid; title('Velodidad Direccion de Referencia')
