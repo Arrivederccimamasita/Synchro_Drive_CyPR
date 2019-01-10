@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.22)  10 JAN 2019 02:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.22)  10 JAN 2019 03:17
 entering extended mode
 **./0main.tex
 (0main.tex
@@ -1357,7 +1357,7 @@ Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count328
-<robot_portada.png, id=110, 272.07529pt x 272.07529pt>
+<robot_portada.png, id=94, 272.07529pt x 272.07529pt>
 File: robot_portada.png Graphic file (type png)
 <use robot_portada.png>
 Package pdftex.def Info: robot_portada.png  used on input line 88.
@@ -1384,7 +1384,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 105--106
 
  []
 
-<mecanismo_interno.jpg, id=150, 293.898pt x 215.3646pt>
+<mecanismo_interno.jpg, id=130, 293.898pt x 215.3646pt>
 File: mecanismo_interno.jpg Graphic file (type jpg)
 <use mecanismo_interno.jpg>
 Package pdftex.def Info: mecanismo_interno.jpg  used on input line 109.
@@ -1437,7 +1437,7 @@ File: ts1fvm.fd 2004/09/07 scalable font definitions for TS1/fvm.
 LaTeX Font Info:    Font shape `TS1/fvm/m/n' will be
 (Font)              scaled to size 8.50006pt on input line 10.
 )
-<simulink_MCD_1.png, id=168, 738.50906pt x 385.44pt>
+<simulink_MCD_1.png, id=148, 738.50906pt x 385.44pt>
 File: simulink_MCD_1.png Graphic file (type png)
 <use simulink_MCD_1.png>
 Package pdftex.def Info: simulink_MCD_1.png  used on input line 245.
@@ -1446,7 +1446,7 @@ Package pdftex.def Info: simulink_MCD_1.png  used on input line 245.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<simulink_MCD_2.png, id=170, 471.26062pt x 235.63031pt>
+<simulink_MCD_2.png, id=150, 471.26062pt x 235.63031pt>
 File: simulink_MCD_2.png Graphic file (type png)
 <use simulink_MCD_2.png>
 Package pdftex.def Info: simulink_MCD_2.png  used on input line 252.
@@ -1454,7 +1454,7 @@ Package pdftex.def Info: simulink_MCD_2.png  used on input line 252.
 LaTeX Info: Redefining \. on input line 255.
 LaTeX Info: Redefining \% on input line 255.
 [5]
-<simulink_MCD_3.png, id=204, 713.66624pt x 329.73187pt>
+<simulink_MCD_3.png, id=184, 713.66624pt x 329.73187pt>
 File: simulink_MCD_3.png Graphic file (type png)
 <use simulink_MCD_3.png>
 Package pdftex.def Info: simulink_MCD_3.png  used on input line 259.
@@ -1471,7 +1471,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 269--270
 
  []
 
-<exp_MCD_1.jpg, id=215, 1371.1225pt x 653.44125pt>
+<exp_MCD_1.jpg, id=195, 1371.1225pt x 653.44125pt>
 File: exp_MCD_1.jpg Graphic file (type jpg)
 <use exp_MCD_1.jpg>
 Package pdftex.def Info: exp_MCD_1.jpg  used on input line 277.
@@ -1479,12 +1479,12 @@ Package pdftex.def Info: exp_MCD_1.jpg  used on input line 277.
 LaTeX Info: Redefining \. on input line 281.
 LaTeX Info: Redefining \% on input line 281.
 [7 <./exp_MCD_1.jpg>]
-<exp_MCD_2.jpg, id=222, 1371.1225pt x 653.44125pt>
+<exp_MCD_2.jpg, id=202, 1371.1225pt x 653.44125pt>
 File: exp_MCD_2.jpg Graphic file (type jpg)
 <use exp_MCD_2.jpg>
 Package pdftex.def Info: exp_MCD_2.jpg  used on input line 287.
 (pdftex.def)             Requested size: 455.24411pt x 216.95241pt.
-<exp_MCD_3_1.jpg, id=223, 1371.1225pt x 653.44125pt>
+<exp_MCD_3_1.jpg, id=203, 1371.1225pt x 653.44125pt>
 File: exp_MCD_3_1.jpg Graphic file (type jpg)
 <use exp_MCD_3_1.jpg>
 Package pdftex.def Info: exp_MCD_3_1.jpg  used on input line 295.
@@ -1497,7 +1497,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 300--301
 LaTeX Info: Redefining \. on input line 301.
 LaTeX Info: Redefining \% on input line 301.
 [8 <./exp_MCD_2.jpg> <./exp_MCD_3_1.jpg>]
-<exp_MCD_3_2.jpg, id=231, 1371.1225pt x 653.44125pt>
+<exp_MCD_3_2.jpg, id=211, 1371.1225pt x 653.44125pt>
 File: exp_MCD_3_2.jpg Graphic file (type jpg)
 <use exp_MCD_3_2.jpg>
 Package pdftex.def Info: exp_MCD_3_2.jpg  used on input line 304.
@@ -1524,7 +1524,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 333--334
 
  []
 
-<simulink_MCI_1.png, id=237, 658.46pt x 391.4625pt>
+<simulink_MCI_1.png, id=217, 658.46pt x 391.4625pt>
 File: simulink_MCI_1.png Graphic file (type png)
 <use simulink_MCI_1.png>
 Package pdftex.def Info: simulink_MCI_1.png  used on input line 339.
@@ -1537,7 +1537,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 351--352
 LaTeX Info: Redefining \. on input line 352.
 LaTeX Info: Redefining \% on input line 352.
 [10 <./simulink_MCI_1.png>] (tray_parab.m)
-<simulink_MCI_3.png, id=245, 858.95906pt x 341.77687pt>
+<simulink_MCI_3.png, id=225, 858.95906pt x 341.77687pt>
 File: simulink_MCI_3.png Graphic file (type png)
 <use simulink_MCI_3.png>
 Package pdftex.def Info: simulink_MCI_3.png  used on input line 365.
@@ -1562,7 +1562,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 378--380
 LaTeX Info: Redefining \. on input line 381.
 LaTeX Info: Redefining \% on input line 381.
 [12]
-<parab_1.jpg, id=297, 1371.1225pt x 653.44125pt>
+<parab_1.jpg, id=277, 1371.1225pt x 653.44125pt>
 File: parab_1.jpg Graphic file (type jpg)
 <use parab_1.jpg>
 Package pdftex.def Info: parab_1.jpg  used on input line 390.
@@ -1572,7 +1572,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 395--396
 
  []
 
-<parab_2.jpg, id=298, 1371.1225pt x 653.44125pt>
+<parab_2.jpg, id=278, 1371.1225pt x 653.44125pt>
 File: parab_2.jpg Graphic file (type jpg)
 <use parab_2.jpg>
 Package pdftex.def Info: parab_2.jpg  used on input line 400.
@@ -1580,7 +1580,7 @@ Package pdftex.def Info: parab_2.jpg  used on input line 400.
 LaTeX Info: Redefining \. on input line 404.
 LaTeX Info: Redefining \% on input line 404.
 [13 <./parab_1.jpg> <./parab_2.jpg>]
-<parab_3.jpg, id=306, 1371.1225pt x 653.44125pt>
+<parab_3.jpg, id=286, 1371.1225pt x 653.44125pt>
 File: parab_3.jpg Graphic file (type jpg)
 <use parab_3.jpg>
 Package pdftex.def Info: parab_3.jpg  used on input line 407.
@@ -1590,7 +1590,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 411--412
 
  []
 
-<parab_4.jpg, id=307, 1371.1225pt x 653.44125pt>
+<parab_4.jpg, id=287, 1371.1225pt x 653.44125pt>
 File: parab_4.jpg Graphic file (type jpg)
 <use parab_4.jpg>
 Package pdftex.def Info: parab_4.jpg  used on input line 417.
@@ -1598,7 +1598,7 @@ Package pdftex.def Info: parab_4.jpg  used on input line 417.
 LaTeX Info: Redefining \. on input line 420.
 LaTeX Info: Redefining \% on input line 420.
 [14 <./parab_3.jpg> <./parab_4.jpg>]
-<parab_5.jpg, id=314, 1371.1225pt x 653.44125pt>
+<parab_5.jpg, id=294, 1371.1225pt x 653.44125pt>
 File: parab_5.jpg Graphic file (type jpg)
 <use parab_5.jpg>
 Package pdftex.def Info: parab_5.jpg  used on input line 423.
@@ -1608,7 +1608,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 427--428
 
  []
 
-<parab_6.jpg, id=315, 1371.1225pt x 653.44125pt>
+<parab_6.jpg, id=295, 1371.1225pt x 653.44125pt>
 File: parab_6.jpg Graphic file (type jpg)
 <use parab_6.jpg>
 Package pdftex.def Info: parab_6.jpg  used on input line 432.
@@ -1616,12 +1616,12 @@ Package pdftex.def Info: parab_6.jpg  used on input line 432.
 LaTeX Info: Redefining \. on input line 436.
 LaTeX Info: Redefining \% on input line 436.
 [15 <./parab_5.jpg> <./parab_6.jpg>]
-<parab_7.jpg, id=322, 1371.1225pt x 653.44125pt>
+<parab_7.jpg, id=302, 1371.1225pt x 653.44125pt>
 File: parab_7.jpg Graphic file (type jpg)
 <use parab_7.jpg>
 Package pdftex.def Info: parab_7.jpg  used on input line 439.
 (pdftex.def)             Requested size: 455.24411pt x 216.95241pt.
-<parab_8.jpg, id=323, 1371.1225pt x 653.44125pt>
+<parab_8.jpg, id=303, 1371.1225pt x 653.44125pt>
 File: parab_8.jpg Graphic file (type jpg)
 <use parab_8.jpg>
 Package pdftex.def Info: parab_8.jpg  used on input line 446.
@@ -1629,7 +1629,7 @@ Package pdftex.def Info: parab_8.jpg  used on input line 446.
 LaTeX Info: Redefining \. on input line 449.
 LaTeX Info: Redefining \% on input line 449.
  [16 <./parab_7.jpg> <./parab_8.jpg>]
-<parab_9.jpg, id=330, 1371.1225pt x 653.44125pt>
+<parab_9.jpg, id=310, 1371.1225pt x 653.44125pt>
 File: parab_9.jpg Graphic file (type jpg)
 <use parab_9.jpg>
 Package pdftex.def Info: parab_9.jpg  used on input line 452.
@@ -1663,17 +1663,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 481--483
  []
 
 [18]
-<control_punto_1.jpg, id=343, 1371.1225pt x 653.44125pt>
+<control_punto_1.jpg, id=323, 1371.1225pt x 653.44125pt>
 File: control_punto_1.jpg Graphic file (type jpg)
 <use control_punto_1.jpg>
 Package pdftex.def Info: control_punto_1.jpg  used on input line 488.
 (pdftex.def)             Requested size: 455.24411pt x 216.95241pt.
-<control_punto_1_2.jpg, id=344, 1371.1225pt x 653.44125pt>
+<control_punto_1_2.jpg, id=324, 1371.1225pt x 653.44125pt>
 File: control_punto_1_2.jpg Graphic file (type jpg)
 <use control_punto_1_2.jpg>
 Package pdftex.def Info: control_punto_1_2.jpg  used on input line 493.
 (pdftex.def)             Requested size: 455.24411pt x 216.95241pt.
-<control_punto_1_3.jpg, id=345, 1371.1225pt x 653.44125pt>
+<control_punto_1_3.jpg, id=325, 1371.1225pt x 653.44125pt>
 File: control_punto_1_3.jpg Graphic file (type jpg)
 <use control_punto_1_3.jpg>
 Package pdftex.def Info: control_punto_1_3.jpg  used on input line 498.
@@ -1685,25 +1685,32 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 LaTeX Info: Redefining \. on input line 501.
 LaTeX Info: Redefining \% on input line 501.
 [19 <./control_punto_1.jpg> <./control_punto_1_2.jpg>]
-<control_punto_2.jpg, id=353, 1371.1225pt x 653.44125pt>
+<control_punto_2.jpg, id=333, 1371.1225pt x 653.44125pt>
 File: control_punto_2.jpg Graphic file (type jpg)
 <use control_punto_2.jpg>
 Package pdftex.def Info: control_punto_2.jpg  used on input line 509.
 (pdftex.def)             Requested size: 455.24411pt x 216.95241pt.
-<control_punto_2_2.jpg, id=354, 1371.1225pt x 653.44125pt>
+<control_punto_2_2.jpg, id=334, 1371.1225pt x 653.44125pt>
 File: control_punto_2_2.jpg Graphic file (type jpg)
 <use control_punto_2_2.jpg>
 Package pdftex.def Info: control_punto_2_2.jpg  used on input line 514.
 (pdftex.def)             Requested size: 455.24411pt x 216.95241pt.
-<control_punto_2_3.jpg, id=355, 1371.1225pt x 653.44125pt>
+<control_punto_2_3.jpg, id=335, 1371.1225pt x 653.44125pt>
 File: control_punto_2_3.jpg Graphic file (type jpg)
 <use control_punto_2_3.jpg>
 Package pdftex.def Info: control_punto_2_3.jpg  used on input line 519.
 (pdftex.def)             Requested size: 455.24411pt x 216.95241pt.
-LaTeX Info: Redefining \. on input line 521.
-LaTeX Info: Redefining \% on input line 521.
- [20 <./control_punto_1_3.jpg> <./control_punto_2.jpg>]
-Underfull \vbox (badness 3271) has occurred while \output is active []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+LaTeX Info: Redefining \. on input line 524.
+LaTeX Info: Redefining \% on input line 524.
+[20 <./control_punto_1_3.jpg> <./control_punto_2.jpg>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 533.
 LaTeX Info: Redefining \% on input line 533.
@@ -1712,37 +1719,40 @@ Underfull \hbox (badness 10000) in paragraph at lines 535--538
 
  []
 
-<control_linea_1.jpg, id=368, 1371.1225pt x 653.44125pt>
+<control_linea_1.jpg, id=348, 1371.1225pt x 653.44125pt>
 File: control_linea_1.jpg Graphic file (type jpg)
 <use control_linea_1.jpg>
 Package pdftex.def Info: control_linea_1.jpg  used on input line 546.
 (pdftex.def)             Requested size: 455.24411pt x 216.95241pt.
-<control_linea_1_2.jpg, id=369, 1371.1225pt x 653.44125pt>
+<control_linea_1_2.jpg, id=349, 1371.1225pt x 653.44125pt>
 File: control_linea_1_2.jpg Graphic file (type jpg)
 <use control_linea_1_2.jpg>
 Package pdftex.def Info: control_linea_1_2.jpg  used on input line 551.
 (pdftex.def)             Requested size: 455.24411pt x 216.95241pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 554.
-LaTeX Info: Redefining \% on input line 554.
- [22 <./control_linea_1.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 554--555
+Underfull \hbox (badness 10000) in paragraph at lines 543--555
 
  []
 
-<control_linea_2.jpg, id=377, 1371.1225pt x 653.44125pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<control_linea_2.jpg, id=350, 1371.1225pt x 653.44125pt>
 File: control_linea_2.jpg Graphic file (type jpg)
 <use control_linea_2.jpg>
 Package pdftex.def Info: control_linea_2.jpg  used on input line 559.
 (pdftex.def)             Requested size: 455.24411pt x 216.95241pt.
-<control_linea_2_2.jpg, id=378, 1371.1225pt x 653.44125pt>
+<control_linea_2_2.jpg, id=351, 1371.1225pt x 653.44125pt>
 File: control_linea_2_2.jpg Graphic file (type jpg)
 <use control_linea_2_2.jpg>
 Package pdftex.def Info: control_linea_2_2.jpg  used on input line 564.
 (pdftex.def)             Requested size: 455.24411pt x 216.95241pt.
 
+Underfull \vbox (badness 2027) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 566.
+LaTeX Info: Redefining \% on input line 566.
+ [22 <./control_linea_1.jpg>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 567.
@@ -1759,42 +1769,141 @@ Underfull \hbox (badness 10000) in paragraph at lines 586--587
 
 LaTeX Info: Redefining \. on input line 590.
 LaTeX Info: Redefining \% on input line 590.
-[24 <./control_linea_2_2.jpg>] (pruebasMCD.m
-LaTeX Info: Redefining \. on input line 35.
-LaTeX Info: Redefining \% on input line 35.
- [25]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[24 <./control_linea_2_2.jpg>]
+<control_tray_1.jpg, id=374, 1371.1225pt x 653.44125pt>
+File: control_tray_1.jpg Graphic file (type jpg)
+<use control_tray_1.jpg>
+Package pdftex.def Info: control_tray_1.jpg  used on input line 595.
+(pdftex.def)             Requested size: 455.24411pt x 216.95241pt.
+<control_tray_1_2.jpg, id=375, 1371.1225pt x 653.44125pt>
+File: control_tray_1_2.jpg Graphic file (type jpg)
+<use control_tray_1_2.jpg>
+Package pdftex.def Info: control_tray_1_2.jpg  used on input line 600.
+(pdftex.def)             Requested size: 455.24411pt x 216.95241pt.
 
-LaTeX Info: Redefining \. on input line 81.
-LaTeX Info: Redefining \% on input line 81.
- [26])
-LaTeX Info: Redefining \. on input line 604.
-LaTeX Info: Redefining \% on input line 604.
+Underfull \hbox (badness 10000) in paragraph at lines 603--605
 
-[27] (pruebasMCI.m)
-LaTeX Info: Redefining \. on input line 608.
-LaTeX Info: Redefining \% on input line 608.
- [28]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 608.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 608.
+ []
+
+LaTeX Info: Redefining \. on input line 605.
+LaTeX Info: Redefining \% on input line 605.
+[25 <./control_tray_1.jpg> <./control_tray_1_2.jpg>]
+<control_tray_2.jpg, id=383, 1371.1225pt x 653.44125pt>
+File: control_tray_2.jpg Graphic file (type jpg)
+<use control_tray_2.jpg>
+Package pdftex.def Info: control_tray_2.jpg  used on input line 609.
+(pdftex.def)             Requested size: 455.24411pt x 216.95241pt.
+<control_tray_2_2.jpg, id=384, 1371.1225pt x 653.44125pt>
+File: control_tray_2_2.jpg Graphic file (type jpg)
+<use control_tray_2_2.jpg>
+Package pdftex.def Info: control_tray_2_2.jpg  used on input line 614.
+(pdftex.def)             Requested size: 455.24411pt x 216.95241pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 617--619
+
+ []
+
+LaTeX Info: Redefining \. on input line 620.
+LaTeX Info: Redefining \% on input line 620.
+[26 <./control_tray_2.jpg> <./control_tray_2_2.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 620--621
+
+ []
+
+LaTeX Info: Redefining \. on input line 628.
+LaTeX Info: Redefining \% on input line 628.
+[27]
+<postura.png, id=395, 326.72063pt x 344.03531pt>
+File: postura.png Graphic file (type png)
+<use postura.png>
+Package pdftex.def Info: postura.png  used on input line 638.
+(pdftex.def)             Requested size: 182.09486pt x 191.74504pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--663
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 673--675
+
+ []
+
+LaTeX Info: Redefining \. on input line 675.
+LaTeX Info: Redefining \% on input line 675.
+[28 <./postura.png>]
+LaTeX Info: Redefining \. on input line 678.
+LaTeX Info: Redefining \% on input line 678.
+ [29]
+Underfull \hbox (badness 10000) in paragraph at lines 688--690
+
+ []
+
+<PurePursuitSeguimiento_Error.jpg, id=409, 1927.2pt x 966.61125pt>
+File: PurePursuitSeguimiento_Error.jpg Graphic file (type jpg)
+<use PurePursuitSeguimiento_Error.jpg>
+Package pdftex.def Info: PurePursuitSeguimiento_Error.jpg  used on input line 6
+94.
+(pdftex.def)             Requested size: 455.24411pt x 228.33362pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 698--701
+
+ []
+
+<PurePursuitValoresEntrada.jpg, id=410, 961.5925pt x 435.6275pt>
+File: PurePursuitValoresEntrada.jpg Graphic file (type jpg)
+<use PurePursuitValoresEntrada.jpg>
+Package pdftex.def Info: PurePursuitValoresEntrada.jpg  used on input line 708.
+
+(pdftex.def)             Requested size: 364.19667pt x 164.9951pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 712--717
+
+ []
+
+LaTeX Info: Redefining \. on input line 717.
+LaTeX Info: Redefining \% on input line 717.
+[30 <./PurePursuitSeguimiento_Error.jpg> <./PurePursuitValoresEntrada.jpg>]
+<PurePursuitSeguimientoFlama_Error.jpg, id=417, 1927.2pt x 966.61125pt>
+File: PurePursuitSeguimientoFlama_Error.jpg Graphic file (type jpg)
+<use PurePursuitSeguimientoFlama_Error.jpg>
+Package pdftex.def Info: PurePursuitSeguimientoFlama_Error.jpg  used on input l
+ine 734.
+(pdftex.def)             Requested size: 409.71692pt x 205.48698pt.
+<PurePursuitValoresEntradaFlama.jpg, id=418, 1927.2pt x 966.61125pt>
+File: PurePursuitValoresEntradaFlama.jpg Graphic file (type jpg)
+<use PurePursuitValoresEntradaFlama.jpg>
+Package pdftex.def Info: PurePursuitValoresEntradaFlama.jpg  used on input line
+ 744.
+(pdftex.def)             Requested size: 227.62206pt x 114.15942pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 748--753
+
+ []
+
+LaTeX Info: Redefining \. on input line 770.
+LaTeX Info: Redefining \% on input line 770.
+[31 <./PurePursuitSeguimientoFlama_Error.jpg> <./PurePursuitValoresEntradaFlama
+.jpg>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 770.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 770.
  (0main.aux
 LaTeX Info: Redefining \. on input line 24.
 LaTeX Info: Redefining \% on input line 24.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 608.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 608.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 770.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 770.
 Package rerunfilecheck Info: File `0main.out' has not changed.
-(rerunfilecheck)             Checksum: BF466074440E258D3A44AB46807A0660;1803.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 608.
+(rerunfilecheck)             Checksum: E9BA3334298CCA570028AAA65E20A378;1475.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 770.
  ) 
 Here is how much of TeX's memory you used:
- 32684 strings out of 492970
- 608225 string characters out of 3125259
- 1029352 words of memory out of 3000000
- 35768 multiletter control sequences out of 15000+200000
+ 32553 strings out of 492970
+ 607082 string characters out of 3125259
+ 880352 words of memory out of 3000000
+ 35764 multiletter control sequences out of 15000+200000
  544034 words of font info for 44 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,12n,118p,626b,2041s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 62i,12n,118p,626b,1389s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Javi Owo\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi6
 00\ecbi1200.pk> <C:\Users\Javi Owo\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jkn
 appen\ec\dpi600\ecbi1000.pk>{C:/Users/Javi Owo/AppData/Local/Programs/MiKTeX 2.
@@ -1812,19 +1921,20 @@ ata\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk><C:/Users/J
 avi Owo/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10
 .pfb><C:/Users/Javi Owo/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/am
 sfonts/cm/cmmi10.pfb><C:/Users/Javi Owo/AppData/Local/Programs/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Javi Owo/AppData/Local/Programs/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Javi Owo/AppData/L
-ocal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/Javi
- Owo/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb>
-<C:/Users/Javi Owo/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmsy10.pfb><C:/Users/Javi Owo/AppData/Local/Programs/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmsy5.pfb><C:/Users/Javi Owo/AppData/Local/Programs/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Javi Owo/AppData/Local/
-Programs/MiKTeX 2.9/fonts/type1/bera/fvmb8a.pfb><C:/Users/Javi Owo/AppData/Loca
-l/Programs/MiKTeX 2.9/fonts/type1/bera/fvmr8a.pfb>
-Output written on 0main.pdf (28 pages, 2330489 bytes).
+/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Javi Owo/AppData/Local/Programs/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Javi Owo/AppData/L
+ocal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Jav
+i Owo/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb
+><C:/Users/Javi Owo/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmr7.pfb><C:/Users/Javi Owo/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmsy10.pfb><C:/Users/Javi Owo/AppData/Local/Programs/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/Javi Owo/AppData/Local/
+Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Javi Owo
+/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/bera/fvmb8a.pfb><C:/Users/Javi O
+wo/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/bera/fvmr8a.pfb>
+Output written on 0main.pdf (31 pages, 2950747 bytes).
 PDF statistics:
- 1001 PDF objects out of 1200 (max. 8388607)
- 295 named destinations out of 1000 (max. 500000)
- 419 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 849 PDF objects out of 1000 (max. 8388607)
+ 165 named destinations out of 1000 (max. 500000)
+ 432 words of extra memory for PDF output out of 10000 (max. 10000000)
 

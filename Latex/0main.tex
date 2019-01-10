@@ -590,7 +590,36 @@ Será necesario definir el valor de la ganancia de la función de transferencia 
 	
 	\begin{itemize}
 		\item \textbf{Trayectoria lineal}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{control_tray_1}
+			\caption{Trayectoria realizada en control de seguimiento de trayectoria lineal}
+		\end{figure}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{control_tray_1_2}
+			\caption{Velocidades de actuación a lo largo del tiempo de la trayectoria (arriba $\dot{\theta}$ y abajo $\omega$)}
+		\end{figure}
+		Como se puede observar, en este caso se ha decidido que el robot siga la trayectoria sin separación alguna, al igual que se puede comprobar que se ha realizado el seguimiento de forma exacta, a excepción de los puntos de cambio de pendiente, donde el robot ha realizado un giro más suave y continuo.\\
+		Observando la gráfica de velocidades se puede concluir que el robot ha conseguido realizar dicho seguimiento a una velocidad de desplazamiento constante y, centrándose en la gráfica de $\omega$ se pueden observar los movimientos debidos al cambio de pendiente, cada cual más pequeño debido a que el cambio de pendiente es menor a cada cambio de recta.\\
 		
+		\item \textbf{Trayectoria lineal}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{control_tray_2}
+			\caption{Trayectoria realizada en control de seguimiento de trayectoria interpolada}
+		\end{figure}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{control_tray_2_2}
+			\caption{Velocidades de actuación a lo largo del tiempo de la trayectoria (arriba $\dot{\theta}$ y abajo $\omega$)}
+		\end{figure}
+		En este experimento se puede observar como el robot es capaz de seguir la trayectoria generada a través de la interpolación con spline de 3 puntos.\\
+		Se debe mencionar que a la hora de realizar experimentos con esta herramienta se deben establecer los puntos con valores de X crecientes, ya que en el mismo script se ha definido dicha variable como una fracción del tiempo de simulación, por lo que no podrá volver hacia atrás.\\
+		
+		Si se observa la gráfica de velocidades se puede ver como, en el momento en el que el robot llega al último punto dado para la interpolación, de detiene completamente, tanto en desplazamiento como en rotación.\\
+		
+		Se debe aclarar también que si se desea crea una trayectoria más larga puede suceder que en el tiempo de simulación estipulado no sea capaz de recorrerla, por lo que habría que aumentar el mismo. También se ha de tener en cuenta, junto al tiempo de simulación, que el robot podrá saturar y así no ser capaz de llegar a los puntos.
 	\end{itemize}
 	
 	
