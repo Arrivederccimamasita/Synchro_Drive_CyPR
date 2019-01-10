@@ -12,6 +12,10 @@ omega_sat=[-0.2618 0.2618];%15 grados/segundo
 tetha_d_sat=[-0.75 0.75];%Velocidad lineal de 30 cm/seg
 
 % Parametros del seno a seguir
+% A=0.2;        % x=A*t
+% B=1.2;        % y=B*sin(wt)
+% w=0.05;
+
 A=0.2;        % x=A*t
 B=1.2;        % y=B*sin(wt)
 w=0.2;
@@ -24,6 +28,19 @@ subplot(211);
 % plot(x_tray,y_tray,'b','LineWidth',3);
 % plot(posx,posy,'r','LineWidth',0.5);grid;
 plot(x_tray,y_tray,'k',posx,posy,'r'); xlabel('Pos X [Cm]');ylabel('Pos Y [Cm]');grid;
+muestra_Orientacion=100;
+     hold on;
+     j=muestra_Orientacion;
+     for i=1:length(posx)
+         if(j==muestra_Orientacion)
+             u=cos(ang_phi(i));
+             v=1-u^2;
+             quiver(posx(i),posy(i),u,v,'r'); %Ploteo del vector de la velocidad Lineal.
+             j=0;
+             
+         else j=j+1;
+         end
+     end
 % plot3
 legend('Referencia Trayectoria','Trayectoria real','Location','BestOutside');grid;
 subplot(212);
