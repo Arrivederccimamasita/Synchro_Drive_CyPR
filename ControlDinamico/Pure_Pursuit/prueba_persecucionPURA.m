@@ -12,13 +12,13 @@ omega_sat=[-0.2618 0.2618];%15 grados/segundo
 tetha_d_sat=[-0.75 0.75];%Velocidad lineal de 30 cm/seg
 
 % Parametros del seno a seguir
-A=0.2;        % x=A*t
-B=1.2;        % y=B*sin(wt)
-w=0.2;
-
 % A=0.2;        % x=A*t
 % B=1.2;        % y=B*sin(wt)
-% w=0.13;
+% w=0.2;
+
+A=0.2;        % x=A*t
+B=1.2;        % y=B*sin(wt)
+w=0.13;
 
 % Se lanza la simulacion
 sim('sl_robot_sincrono_persecucion_pura');
@@ -27,22 +27,10 @@ figure(1);
 subplot(211);
 % plot(x_tray,y_tray,'b','LineWidth',3);
 % plot(posx,posy,'r','LineWidth',0.5);grid;
-plot(x_tray,y_tray,'k',posx,posy,'r'); xlabel('Pos X [Cm]');ylabel('Pos Y [Cm]');grid;
-muestra_Orientacion=100;
-     hold on;
-     j=muestra_Orientacion;
-     for i=1:length(posx)
-         if(j==muestra_Orientacion)
-             u=cos(ang_phi(i));
-             v=1-u^2;
-             quiver(posx(i),posy(i),u,v,'r'); %Ploteo del vector de la velocidad Lineal.
-             j=0;
-             
-         else j=j+1;
-         end
-     end
+plot(x_tray,y_tray,'k',posx,posy,'r'); xlabel('Pos X (m)');ylabel('Pos Y (m)');grid;
+
 % plot3
-legend('Referencia Trayectoria','Trayectoria real','Location','BestOutside');grid;
+legend('Referencia Trayectoria','Trayectoria real','Location','BestOutside');
 subplot(212);
 plot(t,x_tray-posx,t,y_tray-posy,'b','LineWidth',1);xlabel('Tiempo [s]');legend('Error Pos X','Error Pos Y','Location','BestOutside');grid;
 % plot(t, x_tray-posx,t,y_tray-posy,'b');title('ERROR');grid;
@@ -50,6 +38,6 @@ plot(t,x_tray-posx,t,y_tray-posy,'b','LineWidth',1);xlabel('Tiempo [s]');legend(
 %Graficas vbles de entrada al robot
 figure(2);
 subplot(211);
-plot(t,v_ref,'r'); grid; title('Velocidad Desplazamiento de Referencia')
+plot(t,theta_d,'r'); grid; title('Velocidad Desplazamiento de Referencia')
 subplot(212);
-plot(t,omega,'b');grid; title('Velodidad Direccion de Referencia')
+plot(t,omega,'b');grid; title('Velodidad Dirección de Referencia')

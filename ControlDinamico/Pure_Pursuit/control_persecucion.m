@@ -20,7 +20,6 @@ function [out]=control_persecucion(in)
         % Se calcula los errores
         L=sqrt((x_ref-x)^2+(y_ref-y)^2); 
     end
-    
    
 
     % Una vez calculados los errores, se hace control
@@ -30,11 +29,6 @@ function [out]=control_persecucion(in)
     alpha=atan2(y_ref-y,x_ref-x)-phi; %Error en angulo
     beta=-phi-alpha;
     
-%      e_ang=atan2(y_ref-y,x_ref-x)-phi; %Error en angulo
-%     r=L/(2*e_ang);
-% r=-(L^2)/(2*(x_ref-x));
-    %omega=(2*v_ref*sin(e_ang))/L; %Velocidad angular del robot para ir al punto
-    %omega=(2*(x_ref-x))/(2*L);
     omega=kalf*alpha+kbeta*beta;
     
     out=[theta_d_ref;omega];

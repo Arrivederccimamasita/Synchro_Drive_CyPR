@@ -111,7 +111,7 @@ El modelo síncrono se basa en 3 ruedas idénticas que se desplazan y giran al u
 
 Este modelo tiene como ventajas la separación de motores entre traslación y rotación que facilita el control, la garantía de control en trayectorias rectilíneas debido a la mecánica del mismo y la facilidad que incluyen las restricciones homólogas que posee. Como desventaja encontramos el complejo diseño mecánico que posee para poder transmitir la rotación y traslación a las tres ruedas simultáneamente y, por ende, su difícil implementación en la realidad.\\
 % SEGUIR HABLANDO DE MOVIDAS TEORICAS UN PSEUDO LARGO TRECHO ETC ETC ETC ETC
-
+\newpage
 \section{Análisis cinemático}
 	\subsection{Introducción teórica y simplificación del modelo}
 	Gracias a la mecánica del modelo síncrono, los cálculos para la obtención del modelo cinemático del mismo van a ser sencillos, ya que se trata de un modelo con restricciones holónomas, es decir, el comportamiento del vehículo se puede representar a través de sus variables generalizadas:
@@ -129,18 +129,18 @@ Este modelo tiene como ventajas la separación de motores entre traslación y ro
 			0 & 0 & 1
 		\end{bmatrix}
 	\end{equation}
-	Además de ello, cabe destacar que, para simplificar el modelado del robot, se han asumido una serie de restricciones cinemáticas en las ruedas cómo son:
+	Además de ello, cabe destacar que, para simplificar el modelado del robot, se han asumido una serie de restricciones cinemáticas en las ruedas como son:
 	\begin{itemize}
 		\item Movimiento en un plano horizontal.
 		\item Las ruedas poseen un único punto de contacto.
 		\item Las ruedas no son deformables.
 		\item $v_c$ en el punto de contacto será nulo.
-		\item La rueda no resbala, sino que produce un movimiento de arraste o deslizamiento.
-		\item No habrá fricción en el punto de contecto.
+		\item La rueda no resbala, sino que produce un movimiento de arrastre o deslizamiento.
+		\item No habrá fricción en el punto de contacto.
 		\item Los ejes de dirección serán en todo momento ortogonales a la superficie.
 		\item Las ruedas están conectadas al bastidor de giro.
 	\end{itemize}
-
+\newpage
 \subsection{Obtención del modelo cinemático directo y su Jacobiano}
 Para el modelo cinemático directo en cuestión, sólo se necesita como dato el valor del radio de las ruedas, $R$, para poder realizar la conversión entre velocidad angular y velocidad lineal. En este trabajo, siendo el grupo de trabajo número 11, se tiene cómo radio de las ruedas el valor de $R = 0.4 m$. Con esto ya se puede hallar el modelo cinemático del robot:\\
 
@@ -164,7 +164,7 @@ Para el modelo cinemático directo en cuestión, sólo se necesita como dato el 
 		$
 \end{center}
 
-Como ya vio en las clases de la asignatura, las variables generalizadas son las que dan información sobre el estado del robot, ya que se encuentran en ellas las coordenadas cartesianas \textit{X} e \textit{Y} del plano del centro del robot y el ángulo de giro $\varphi$ con respecto al eje X, como se ha decidido definir en este proyecto.\\
+Como ya se vio en las clases de la asignatura, las variables generalizadas son las que dan información sobre el estado del robot, ya que se encuentran en ellas las coordenadas cartesianas \textit{X} e \textit{Y} del plano del centro del robot y el ángulo de giro $\varphi$ con respecto al eje X, como se ha decidido definir en este proyecto.\\
 Así mismo, las variables de actuación son, como dice su nombre, las variables que reflejarán el valor de movimiento de los motores del robot, es decir, del motor encargado del desplazamiento (velocidad angular de desplazamiento, $\dot{\theta}$) y del encargado de la rotación (velocidad angular de rotación, $\omega$).\\
 
 Una vez detectadas las variables del sistema, se deberá definir la relación entre ellas y, de ese modo,obtener la expresión del Jacobiano, es decir, la relación entre la derivada de las variables articulares de salida y de entrada.\\
@@ -179,7 +179,7 @@ En primer lugar, se definirá $v$ como la componente global de velocidad de desp
 	\end{center}
 
 
-	Sabiendo además que la velocidad de rotación $\dot{\varphi}$ concuerda con la variable de actuación $\omega$, se puede montar la matriz Jacobiana del sistema del mismo que se dijo anteriormmente, es decir:
+	Sabiendo además que la velocidad de rotación $\dot{\varphi}$ concuerda con la variable de actuación $\omega$, se puede montar la matriz Jacobiana del sistema del mismo que se dijo anteriormente, es decir:
 \begin{center}
 		$
 		J=
@@ -212,7 +212,7 @@ La matriz Jacobiana describirá la cinemática directa del sistema relacionando 
 		\end{bmatrix}
 	\end{equation}
 
-	e integrando respecto del tiempo éstas matrice,se obtendrá:
+	e integrando respecto del tiempo estas matrices, se obtendrá:
 		\begin{equation}
 		\begin{bmatrix}
 		x\\
@@ -233,9 +233,9 @@ La matriz Jacobiana describirá la cinemática directa del sistema relacionando 
 		\end{bmatrix}
 	\end{equation}
 
-	dónde $x_0$, $y_0$ y $\varphi_0$ serán las condiciones iniciales de posición y orientación.\\
+	donde $x_0$, $y_0$ y $\varphi_0$ serán las condiciones iniciales de posición y orientación.\\
 	\subsubsection{Esquema de simulación del modelo directo obtenido}
-	Una vez obtenido el modelo cinemático directo se implementará en una función en Matlab, la cuál servida para modelar el comportamiento del movimiento del robot. Por tanto, el modelo cinematico directo se implementará del siguiente modo:
+	Una vez obtenido el modelo cinemático directo se implementará en una función en Matlab, la cuál servirá para modelar el comportamiento del movimiento del robot. Por tanto, el modelo cinemático directo se implementará del siguiente modo:
 	% AQUI VA EL CODIGO DE PRUEBAS MCD -> METIDO EN UN ANEXO
 	\lstinputlisting[caption = {Implementación del modelo cinemático directo}]{MCD_movil.m}
 
@@ -246,24 +246,22 @@ La matriz Jacobiana describirá la cinemática directa del sistema relacionando 
 		\caption{Esquema global}
 	\end{figure}
 
-En éste montaje existen dos subsistemas, los cuales se mostrarán a continuación. El primero de ellos, será el encargado de generar una actuación senoidal sobre el sobor, de tal modo que siga una trayectoria de éste tipo.
+En este montaje existen dos subsistemas, los cuales se mostrarán a continuación. El primero de ellos, será el encargado de generar una actuación senoidal sobre el motor, de tal modo que siga una trayectoria de este tipo.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=.5\textwidth]{simulink_MCD_2}
 	\caption{Esquema del bloque \textit{Actuación Senoidal}}
 \end{figure}
 
- El segundo de ellos, será la implmentación del modelo cinemático directo del robot en un bloque, en el cuál se relamientará la variable angular, la cual es una variable de entrada y de salida del modelo y, además de ello, se saturarán las actuaciones.
+ El segundo de ellos, será la implementación del modelo cinemático directo del robot en un bloque, en el cuál se realimentará la variable angular, la cual es una variable de entrada y de salida del modelo y, además de ello, se saturarán las actuaciones.
  \begin{figure}[h!]
 	 \centering
 	 \includegraphics[width=.65\textwidth]{simulink_MCD_3}
 	 \caption{Esquema del bloque \textit{DCM Synchro-Drive}}
  \end{figure}
 
-\newpage
-Cabe destacar cómo se saturarán las variables del modelo; la velocidad angular, se limitará a aproximadamente $\pm$ 15 grados por segundo, ya que es el angulo máximo aproximado al que teóricamente se puede girar un volante. En cuando a la velocidad lineal, se limitará aproximadamente a 30 centímetros por segundo, que correspondería aproximadamente a 1 km/h, lo cuál se considera una velocidad suficiente para un robot móvil.\\
+Cabe destacar cómo se saturarán las variables del modelo: la velocidad angular, se limitará a aproximadamente $\pm$ 15 grados por segundo, ya que es el angulo máximo aproximado al que teóricamente se puede girar un volante. En cuando a la velocidad lineal, se limitará aproximadamente a 30 centímetros por segundo, que correspondería aproximadamente a 1 km/h, lo cuál se considera una velocidad suficiente para un robot móvil.\\
 
-Antes de introducir los experimentos realizados, cabe destacar que en un anexo se encontrarán los códigos de programación implementados para realizar dichos experimentos.
 
 \subsubsection{Experimentos realizados al modelo para su verificación}
 Con este código se pueden realizar varios experimentos. Para todos ellos las características comunes serán que partirán de las mismas condiciones iniciales para las variables generalizadas ($x=0, y=0, \varphi=0$) y tendrán las mismas saturaciones, las cuales hemos supuesto como realistas para este tipo de robot.\\
@@ -378,16 +376,15 @@ Se observa que simplemente se realiza la multiplicación matricial para obtener 
 Por último, antes de volver al esquema global, se saturan los valores de estas salidas con las mismas saturaciones que se habían determinado realistas en la cinemática directa.\\
 Para terminar, en el esquema global, se coloca de nuevo el bloque de la cinemática directa para comprobar, con las variables de actuación obtenidas con el modelo inverso, se obtiene la misma trayectoria que se ha diseñado.\\
 
-\newpage
 \subsubsection{Experimentos realizados al modelo inverso para su verificación}
 Con el montaje en Simulink ya creado, lo único que falta es lanzar un script que asigne valores a las incógnitas de la simulación ($A$ y $D$) y represente los datos:
 	% AQUI VA EL CODIGO DE PRUEBAS MCI -> METIDO EN UN ANEXO
 
 Se debe tener en cuenta siempre que en la posición inicial hay que determinar la orientación inicial que debe tener el robot, lo cual se podrá obtener fácilmente como \textit{atan($\frac{A}{D}$)}. Esto debe ser así porque, en caso contrario, al estar el robot en reposo con $\varphi$ nulo, al principio de la trayectoria el valor de velocidad de rotación saturará intentando conseguir dicha orientación y la trayectoria no será la misma porque el sistema, con dicha saturación, no será capaz de realizarla en un tiempo tan pequeño. Así, para unos valores de $A=3$ y $D=10$, obtenemos:
 
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=.8\textwidth]{parab_1}
+	\includegraphics[width=1\textwidth]{parab_1}
 	\caption{Comparativa entre la trayectoria pedida y la obtenida}
 \end{figure}
 
@@ -395,14 +392,14 @@ Se debe tener en cuenta siempre que en la posición inicial hay que determinar l
 Como se puede observar, en la gráfica comparativa anterior entre la trayectoria creada por funciones y la obtenida a partir de los valores de las variables de actuación sacadas del modelo cinemático inverso, los resultados son prácticamente iguales, por lo que se puede decir que el modelo inverso es aceptable.\\
 
 Aparte, se van a mostrar las gráficas de los valores de las variables de actuación obtenidas con la cinemática inversa, así como el valor de la variable $\varphi$:
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=.8\textwidth]{parab_2}
+	\includegraphics[width=1\textwidth]{parab_2}
 	\caption{Valores de las variables de actuación}
 \end{figure}
 
 \newpage
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{parab_3}
 	\caption{Valor de la orientación a lo largo de la trayectoria}
@@ -412,7 +409,7 @@ Como se observa, en ambas velocidades no se produce saturación alguna, ya que e
 
 Cabe añadir que es lo que pasaría si las variables de actuación saturasen, ya que no podrían realizar la misma trayectoria. Para ello se van a mostrar dos experimentos distintos. El primero de ellos se basa en bajar la saturación de $\dot{\theta}$ a la mitad, es decir, a $\pm$0.375:
 
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{parab_4}
 	\caption{Comparativa de trayectorias con $\dot{\theta}$ saturada}
@@ -426,7 +423,7 @@ Cabe añadir que es lo que pasaría si las variables de actuación saturasen, ya
 
 Como se puede observar, la trayectoria real que alcanza el robot se reduce tanto en \textit{X} como en \textit{Y}. Esto es lógico desde el punto de vista de la cinemática, puesto que al no poder alcanzar la velocidad necesaria, no llegará a ninguno de los valores objetivos en las coordenadas cartesianas. En la figura anterior se puede ver como $\dot{\theta}$ satura mientras que $\omega$ no.\\
 
-Ahora se probará a saturar la velocidad de rotación, reduciendo el límite original a una décima parte, obteniendo una nueva saturación de $\pm$0.02618:
+Ahora se probará a saturar la velocidad de rotación, reduciendo el límite original a una décima parte, obteniendo una nueva saturación de $\pm$0.02618 rad/s:
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1\textwidth]{parab_6}
@@ -455,12 +452,13 @@ El efecto que se produce al haber saturaciones en ambas actuaciones es una combi
 
 \newpage
 \section{Control dinámico}
-En lo que a la implementación de un algoritmo de control dinámico sobre el robot concierne, en primer lugar será necesario compltear el modelo añadiendo la dinámica de los actuadores.\\
+En lo que a la implementación de un algoritmo de control dinámico sobre el robot concierne, en primer lugar será necesario completar el modelo añadiendo la dinámica de los actuadores.\\
 Los actuadores del robot serán 3 motores de corriente continua, cuya función de transferencia que relaciona la entrada de tensión del motor con la salida en velocidad del mismo se define del siguiente modo:
 \begin{equation}
 	G(s)=\frac{v(s)}{u(s)}=\frac{K}{\tau s+1}
 \end{equation}
-Será necesario definir el valor de la ganancia de la función de transferencia y la constante de tiempo, los cuales se obtendrán experimentalmente y unificarán toda la dinámica del motor, es decir,momento de inercia del motor, coeficiente de fricción viscosa, constante de fuerza contra-electromotriz, etcétera.
+Será necesario definir el valor de la ganancia de la función de transferencia y la constante de tiempo, los cuales se obtendrán experimentalmente y unificarán toda la dinámica del motor, es decir, momento de inercia del motor, coeficiente de fricción viscosa, constante de fuerza contra-electromotriz, etcétera.\\
+Debido a la falta de tiempo no se ha llegado a implementar dicha dinámica en los motores, lo cual no hace que lo siguiente sea inválido, si no que habría que ajustar los controladores de otra forma.
 \subsection{Implementación de diversos algoritmos de control}
 	\subsubsection{Control a un punto}
 	En este apartado se va a realizar el control de movimiento a un punto, interesando únicamente que el robot consiga alcanzar dicho objetivo, sin importar orientación y sin restricciones temporales.\\
@@ -541,12 +539,12 @@ Será necesario definir el valor de la ganancia de la función de transferencia 
 	
 	\begin{itemize}
 		\item \textbf{Recta a seguir con A=2, B=5 y C=3}
-		\begin{figure}[h!]
+		\begin{figure}[H]
 			\centering
 			\includegraphics[width=1\textwidth]{control_linea_1}
 			\caption{Trayectoria realizada en control de seguimiento de línea}
 		\end{figure}
-		\begin{figure}[h!]
+		\begin{figure}[H]
 			\centering
 			\includegraphics[width=1\textwidth]{control_linea_1_2}
 			\caption{Velocidades de actuación a lo largo del tiempo de la trayectoria (arriba $\dot{\theta}$ y abajo $\omega$)}
@@ -641,7 +639,7 @@ Será necesario definir el valor de la ganancia de la función de transferencia 
 	Es por esto que los valores elegidos para dichas constantes han sido $K_v=0.5$, $K_{\beta}=-1$ y $K_{\alpha}=2$.\\
 	
 	Una vez comentado el proceso de diseño de este control se puede comenzar a realizar experimentos. En este caso se han realizado dos experimentos cuyos objetivos son diferentes tanto en posición como en orientación:
-	
+	\newpage
 	\begin{itemize}
 		\item \textbf{Control de postura con $x^*=10$, $y^*=-10$ y $\varphi^*=-pi$}
 		\begin{figure}[H]
@@ -656,7 +654,7 @@ Será necesario definir el valor de la ganancia de la función de transferencia 
 		\end{figure}
 		Como se puede observar, el robot consigue llegar a la orientación pedida en la posición pedida. Para realizar esto, se observa que el robot realiza un giro extraño, lo cual se debe a que el control de velocidad de orientación se realiza en función a la distancia hasta el punto objetivo, mientras que el control de velocidad de desplazamiento se realiza sin tener en cuenta el control de orientación.\\
 		Así pues se observa una saturación en la velocidad de desplazamiento durante la mayor parte del recorrido y a su vez un decremento antes de llegar al mismo, lo que corrobora dicho funcionamiento.
-		
+		\newpage
 		\item \textbf{Control de postura con $x^*=5$, $y^*=10$ y $\varphi^*=pi/2$}
 		\begin{figure}[H]
 			\centering
@@ -674,32 +672,32 @@ Será necesario definir el valor de la ganancia de la función de transferencia 
 \newpage
 
 \subsection{Ley de control \textit{Persecución pura}}
-Por ultimo, se implementara una ley de control comun en robotica movil, la cual se define como persecucion pura o \textit{Pure Pursuit}. Con esta tecnica se busca un seguimiento de un camino explicito, el cual se encuentra determinado por un generador de trayectorias.\\
-Esta ley de control se ha optado por implementarla, en lugar de buscando la minima distancia entre la recta de la trayectoria y la posicion del robot, realizando un control de postura mezclado con un seguimiento de trayectoria. \\
-Este control de la postura del robot tendra acentuada la ganancia que minimiza el angulo que forma la recta que une la posicion actual del robot con el punto que se obtiene del generador de trayectorias.\\
-En la figura que se muestra a continuacion, la cual contiene la misma notacion que el control a una postura, dicho angulo sera $\alpha$:
+Por último, se implementará una ley de control común en robótica móvil, la cual se define como persecución pura o \textit{Pure Pursuit}. Con esta técnica se busca el seguimiento de un camino explicito, el cual se encuentra determinado por un generador de trayectorias.\\
+Esta ley de control se ha optado por implementarla, en lugar de buscando la mínima distancia entre la recta de la trayectoria y la posición del robot, realizando un control de postura mezclado con un seguimiento de trayectoria. \\
+Este control de la postura del robot tendrá acentuada la ganancia que minimiza el ángulo que forma la recta que une la posición actual del robot con el punto que se obtiene del generador de trayectorias.\\
+La figura que se muestra a continuación contiene la misma notación que el control a una postura, donde el ángulo minimizado será $\alpha$:
 
 \begin{figure}[h!]
    \centering
    \includegraphics[width=0.3\textwidth]{postura}
-   \caption{Representacion del angulo y la distancia calculados}
+   \caption{Representación del ángulo y la distancia calculados}
 \end{figure}
 
-Por tanto, matematicamente se calculara como:
+Por tanto, matemáticamente se calculará como:
 \begin{center}
 $\rho=\sqrt{(y^*-y)^2+(x^*-x)^2}$ \\
 $\alpha=atan\Big(\dfrac{y^*-y}{x^*-x}\Big)-\varphi$ \\
 $\beta=-\varphi-\alpha$
 \end{center}
 
-Las leyes de control que se implementaran a los motores del robot son:
+Las leyes de control que se implementarán a los motores del robot son:
 \begin{center}
 $v=\frac{K_{\rho}\rho}{R}$ \\
 $\omega=K_{\alpha}\alpha + K_{\beta}\beta$
 \end{center}
 
-Para definir los parametros de los controladores, sera necesario asegurarse de un criterio de signos que asegure la estabilidad del sistema en bucle cerrado. Se debe cumplir que: $K_{\rho}>0$,$K_{\beta}<0$ y que $\Big(K_{\alpha}-K_{\rho}\Big)>0$.\\
-Por lo tanto, los parametros que se implementaran en los controladores son:
+Para definir los parámetros de los controladores, será necesario estipular un criterio de signos que asegure la estabilidad del sistema en bucle cerrado. Se debe cumplir que: $K_{\rho}>0$,$K_{\beta}<0$ y que $\Big(K_{\alpha}-K_{\rho}\Big)>0$.\\
+Por lo tanto, los parámetros que se implementarán en los controladores son:
 \begin{center}
 $K_{\rho}=2.2$\\
 $K_{\beta}=-0.1$\\
@@ -707,14 +705,11 @@ $K_{\alpha}=K_{\beta}+5.8$
 \end{center}
 Como se puede observar, se ha acentuado el valor de la ganancia asociada al angulo $\alpha$. \\
 
-Para verificar el correcto funcionamiento de este controlador, se hara que siga la siguiente senoide:
+Para verificar el correcto funcionamiento de este controlador, se le pedirá que siga la siguiente senoide:
 \begin{center}
 $x=At=0.2t$\\
 $y=Bsin(\omega t)=1.2*sin(0.2t)$
 \end{center}
-
-A continuacion, se mostraran las graficas que muestran los resultados de dicho experimento
-
 
 Con los valores asignados a los controladores y trayectoria propuesta se presentan los siguientes
 	resultados de simulación.\\ 
@@ -731,8 +726,8 @@ Con los valores asignados a los controladores y trayectoria propuesta se present
 		$w=0.2$ \\
 	\end{center}
 
-	En primer lugar, se muestra la superposicion de la referencia dinamica y de la posicion del 
-	robot; además de los errores asociados a cada porsicion cartesiana.\\
+	En primer lugar, se muestra la superposición de la referencia dinámica y de la posición del 
+	robot, además de los errores asociados a cada posición cartesiana.\\
 
 
 	\begin{figure}[h!]
@@ -741,25 +736,26 @@ Con los valores asignados a los controladores y trayectoria propuesta se present
 		\caption{Referencia Vs Seguimiento}
 	\end{figure}
 
-	Como se observa, en el inicio de las trayectoria, se presenta una variacion en mayor frecuencia
-	en la postura del robot; al estabilizar la velocidad del seguimiento de la trayectoria,
-	el robot continua la tecnica de seguimiento de persecucion pura de la trayectoria de forma estable.\\
+	Como se observa, en el inicio de las trayectoria, se presenta una variación en mayor frecuencia
+	en la postura del robot. Al estabilizar la velocidad del seguimiento de la trayectoria,
+	el robot continua la técnica de seguimiento de persecución pura de la trayectoria de forma estable.\\
 
-	Sobre el error, vemos que tenemos un error mantenido  en la posicion \textit{X}, lo que 
-	nos indica un retraso inebitable, pero lo suficientemente pequeño; y por el el lado del error 
-	en \textit{Y}, se observa un error oscilante, que indica que no se estan alcanzando los valores de la referencia
-	con total exactitud.
+	Sobre el error, vemos que tenemos un error mantenido en la posición \textit{X}, lo que 
+	nos indica un retraso inevitable, pero lo suficientemente pequeño; y por el lado del error 
+	en \textit{Y}, se observa un error oscilante, que indica que no se están alcanzando los valores de la referencia
+	con total exactitud.\\
+	El valor de estos errores puede ser raro a vista de la gráfica superpuesta de trayectoria de referencia frente a real, pero hay que tener en cuenta que el que se vena superpuestas no indica que estén realizándolas al mismo tiempo, ya que sabiendo que existe un retardo temporal, es correcto un error en X cuasi-constante y un error en Y en forma cuasi-senoidal.
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=0.8\textwidth]{PurePursuitValoresEntrada}
+		\includegraphics[width=1\textwidth]{PurePursuitValoresEntrada}
 		\caption{Señales de Control}
 	\end{figure}
+\newpage
 
-	Esta siguiente grafica, muestra las señales de control generadas para la trayectoria exigida
-	a lo largo del tiempo de simulación, en esta se puede comprobrar el trabajo del control en la 
-	dirección de referencia, cuya llegada al regimen permantente coincide  con el cese del cambio 
-	brusco en la orientación del robot; y la referencia lineal en este momento obtiene una señal periodica, 
-	tal y como se podria suponer de una trayectoria de este estilo.\\
+	Esta gráfica muestra las señales de control generadas para la trayectoria exigida
+	a lo largo del tiempo de simulación, donde se puede observar que los tramos donde la velocidad de desplazamiento satura son aquellos en los que el robot se encuentra en la pendiente ascendente o descendiente del seno y que los tramos donde se encuentra en su mínima actuación son aquellos en los que el robot se encuentra en un pico del seno, ya sea superior o inferior.\\
+	
+	Se puede concluir entonces que, en esta situación experimental, el método de control necesita tiempo para adaptarse a la trayectoria pero que cuando lo consigue, lo realiza de muy buena forma.
 
 	\end{itemize}
 
@@ -773,29 +769,24 @@ Con los valores asignados a los controladores y trayectoria propuesta se present
 		$w=0.13$ \\
 	\end{center}
 
-	La disminucion de la amplitud mejora en gran medida al seguimiento de la trayectoria, para nuestro
-	modelo de robot movil.\\
+	
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=0.9\textwidth]{PurePursuitSeguimientoFlama_Error}
+		\includegraphics[width=1\textwidth]{PurePursuitSeguimientoFlama_Error}
 		\caption{Referencia Vs Seguimiento}
 	\end{figure}
-
-	Como se puede observar, comprobamos una linealidad en el cambio de de la orientacion y un seguimiento
-	limpio de la la trayectoria, aun asi, y como se comentó anteriormete, existe un retraso asociado a la 
-	velocidad del robot asociada costante en ambos experimentos.
+\newpage
+	Como se puede observar, la reducción de la frecuencia de la senoide mejora notablemente el funcionamiento del control, puesto que ahora podrá adaptarse más fácilmente a la trayectoria.\\
+	También ha mejorado el error de posición a lo largo del tiempo, como se puede observar, en magnitud. En este experimento y debido a que se realiza un mejor seguimiento, se detecta más el valor constante del error de X y la forma senoidal del error de Y, las razones de los cuales ya se han explicado en el experimento anterior.
 
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=0.5\textwidth]{PurePursuitValoresEntradaFlama}
+		\includegraphics[width=1\textwidth]{PurePursuitValoresEntradaFlama}
 		\caption{Señales de Control}
 	\end{figure}
 
-	Como se pudiese esperar, la variacion de la entrada Señal de \textit{Velocidad Lineal} ocupada del control
-	del la velocidad de recorer un seno matematico se equipare con la cosenoidal de esta; a pesar de ello,
-	la variacion de esta es pequieza, lo que puede asumirse a nivel dinamico.\\
-	En un orden de magnitud menor, se encuentra la variacion de la señal de control de la \textit{Velocidad de Dirección}
-	, de forma constante tras un inicio sobreoscilado debido a una posicion de origen no alineada con la trayectoria.\\
+	Estas gráficas son parecidas a las del experimento anterior pero con mejor resultados, puesto que la saturación en las velocidades se realiza durante mucho menos tiempo que en el anterior y ya no existe saturación en la velocidad de desplazamiento en los tramos de pendiente ascendente y descendente de la senoide.\\
+	De acuerdo a la concordancia de haber reducido la frecuencia de la senoide de referencia, la velocidad de rotación del robot será menor al no necesitar realizar los giros a tanta velocidad.
 
 
 
