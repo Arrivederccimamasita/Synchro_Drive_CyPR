@@ -38,8 +38,6 @@ function [out]=generador_tray(in)
              y_ref=ytray(x_ref);
          end
 
-        % Implementacion trayeectoria senoidal
-        %y_ref=0.1*sin(2*pi*x_ref);
     end
     out=[x_ref;y_ref];
 end

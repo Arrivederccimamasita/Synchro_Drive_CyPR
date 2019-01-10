@@ -11,8 +11,8 @@ function [out]=control_linea(in)
 % La velocidad lineal sera constante
 theta_d_ref=0.5;
     
-%Definicion parametros controlador 
-% Me los he inventado. Seria interesante sacarle alguna coherencia
+% Definicion parametros controlador. Asingacion del signo del parametro
+%para evitar movimientos equivocados
 if a<0 && b<0
     Kd=-2; 
 elseif a>0 && b>0
