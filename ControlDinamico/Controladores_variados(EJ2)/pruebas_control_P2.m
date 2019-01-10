@@ -72,8 +72,6 @@ switch (sel)
   
     figure% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     subplot(2,1,1);plot(t,theta_d);xlabel('Tiempo (s)');ylabel('Velocidad de desplazamiento (rad/s)');title('Variación de la velocidad angular de desplazamiento a lo largo de la trayectoria');xlim([0 50]);grid;subplot(2,1,2);plot(t,omega);xlabel('Tiempo (s)');ylabel('Velocidad de rotación (rad/s)');title('Variación de la velocidad angular de rotación a lo largo de la trayectoria');xlim([0 50]);grid;
-%     figure
-%     subplot(2,1,1);plot(t,posx);xlabel('Tiempo (s)');ylabel('Posición cartesiana X (m)');title('Posición cartesiana X frente al tiempo');xlim([0 50]);grid;subplot(2,1,2);plot(t,posy);xlabel('Tiempo (s)');ylabel('Posición cartesiana Y (m)');title('Posición cartesiana Y frente al tiempo');xlim([0 50]);grid;
      case 3
      % MOVER POR UNA TRAYECTORIA A CIERTA DISTACIA
      % %%%
@@ -90,12 +88,21 @@ switch (sel)
        sel=input(selection);
     end
 
+    % Distancia a la que se quiere seguir la trayectoria
+     d=0;
+     
+     % Inicialización de variables
+     A=[0;0];
+     B=[0;0];
+     C=[0;0];
     if sel==0
      % Posiciones iniciales del integrador
      pos_init=[0;0;0.0997];
+     % Tiempo de simulacion
+    tsim=130; 
     else
      % Posiciones iniciales del integrador
-     pos_init=[0;0;0.5608];
+     pos_init=[0;0;0];
      
       % Recogida de los puntos por los que se desea que pase el robot.
       % RESTRICCION -> SOLO VALIDO EN EL PRIMER Y CUARTO CUADRANTE
@@ -108,9 +115,10 @@ switch (sel)
      C_x=input('Introduzca la coord X del punto C: ');
      C_y=input('Introduzca la coord Y del punto C: ');
      C=[C_x;C_y];
+     % Tiempo de simulacion
+    tsim=1500; 
     end
-    % Tiempo de simulacion
-    tsim=1200; 
+    
     % Tiempo de muestreo
     Tm=0.1;
 
@@ -119,18 +127,27 @@ switch (sel)
      omega_sat=[-0.2618 0.2618];%15 grados/segundo
      tetha_d_sat=[-0.75 0.75];%Velocidad lineal de 30 cm/seg        
      
-     % Distancia a la que se quiere seguir la trayectoria
-     d=0;
-     
-    % Definicion de los ptos a seguir
-     O=[0;0];
-     P=[O A B C];
      
      % Se lanza la simulacion
      sim('sl_robot_sincrono_control_trayect');
      
      % Se grafican resultados
-     figure();plot(P(1,:),P(2,:),'*r','LineWidth',2);hold on;plot(posx,posy,'b','LineWidth',1);grid;
+     if sel==0
+         figure;plot(x_tray,y_tray,'r','LineWidth',2);hold on;plot(posx,posy,'b');axis([0 1.2 0 0.045]);grid;...
+         title('Control de seguimieto a trayectoria lineal');xlabel('Posición cartesiana X');ylabel('Posición cartesiana Y');...
+         legend('Trayectoria referencia','Trayectoria robot','Location','BestOutside');
+        figure;subplot(2,1,1);plot(t,theta_d);xlabel('Tiempo (s)');ylabel('Velocidad de desplazamiento (rad/s)');...
+         title('Variación de la velocidad angular de desplazamiento a lo largo de la trayectoria');xlim([0 120]);grid;...
+         subplot(2,1,2);plot(t,omega);xlabel('Tiempo (s)');ylabel('Velocidad de rotación (rad/s)');...
+         title('Variación de la velocidad angular de rotación a lo largo de la trayectoria');xlim([0 120]);grid;
+     else
+         P=[A B C];
+        figure;plot(P(1,:),P(2,:),'*r','LineWidth',2);hold on;plot(posx,posy,'b','LineWidth',1);grid;
+        figure;subplot(2,1,1);plot(t,theta_d);xlabel('Tiempo (s)');ylabel('Velocidad de desplazamiento (rad/s)');...
+         title('Variación de la velocidad angular de desplazamiento a lo largo de la trayectoria');xlim([0 1200]);grid;...
+         subplot(2,1,2);plot(t,omega);xlabel('Tiempo (s)');ylabel('Velocidad de rotación (rad/s)');...
+         title('Variación de la velocidad angular de rotación a lo largo de la trayectoria');xlim([0 1200]);grid;
+     end
      
      % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
      

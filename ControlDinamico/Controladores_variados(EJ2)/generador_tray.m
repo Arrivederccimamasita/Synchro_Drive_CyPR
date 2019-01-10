@@ -4,10 +4,11 @@ function [out]=generador_tray(in)
     A=in(3:4);
     B=in(5:6);
     C=in(7:8);
-
-    % Se genera una trayectoria senoidal de poca amplitud y frec
-    x_ref=t/100;  % Factor de escala
     
+
+        % Se genera una trayectoria senoidal de poca amplitud y frec
+        x_ref=t/100;  % Factor de escala
+
     % Implementacion de trayectoria a trozos
     if sel==0
         if  t<=30
@@ -26,8 +27,16 @@ function [out]=generador_tray(in)
          O=[0;0];
          P=[O A B C];
          % Trayectoria a seguir para pasar por los puntos
-         ytray=@(tau) interp1(P(1,:),P(2,:),tau,'spline');   
+         ytray=@(tau) interp1(P(1,:),P(2,:),tau,'spline'); 
+         
          y_ref=ytray(x_ref);
+         
+         if x_ref>C(1)
+             x_ref=C(1);
+             y_ref=C(2);
+         else
+             y_ref=ytray(x_ref);
+         end
 
         % Implementacion trayeectoria senoidal
         %y_ref=0.1*sin(2*pi*x_ref);

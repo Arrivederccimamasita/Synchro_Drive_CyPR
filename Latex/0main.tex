@@ -567,6 +567,33 @@ Será necesario definir el valor de la ganancia de la función de transferencia 
 	En este caso se ha optado por hacer el experimento con una linea horizontal. Como se observa el resultado es muy parecido al del experimento anterior, aunque en este caso una vez alcanzada la recta el robot sobrepasa la misma y debe volver a ella. Esto se debe a que el robot llega a dicha recta de referencia con una orientación de casi 90 grados con respecto a la que tiene la trayectoria de 0 grados y, como las variables de actuación se encuentran saturadas, el robot intenta obtener esa orientación pero tarda más de lo debido.
 	\end{itemize}
 	\subsubsection{Control a una trayectoria}
+	En este apartado se va a realizar el control de una trayectoria, que, a grandes rasgos, es muy semejante al control de un punto, pues se puede interpretar como una sucesión de puntos en el tiempo.\\
+	En este caso se puede indicar también la distancia $d^*$ a la que se desea que el robot realice el seguimiento de la trayectoria, es decir, que la realice igual pero de forma paralela. Para todo esto se necesita implementar la ley de control proporcional más integral para la velocidad y la ley proporcional para la orientación.\\
+	De esta forma, primero se calcula el error en posición como
+	\begin{equation}
+	e=\sqrt{(x^*-x)^2+(y^*-y)^2}-d^*,
+	\end{equation}
+	y, acto seguido, se realiza el control proporcional e integral para la velocidad de desplazamiento tal que
+	\begin{equation}
+	v^*=K_ve+K_i\int{edt}
+	\end{equation}
+	Realizado el control de la velocidad de desplazamiento, se puede controlar la orientación exactamente de la misma forma que en el control a un punto:
+	\begin{equation}
+	\omega=K_h(\varphi^*-\varphi),
+	\end{equation}
+	con $\varphi^*=atan(\frac{y^*-y}{x^*-x})$.\\
+	
+	Una vez vista la teoría que compone al control del seguimiento de una trayectoria se va a proceder a su implementación, para lo cual se ha optado por realizarla en tiempo discreto, necesitando variaciones en el esquema de simulación como el muestreo de señales y tiempo para el trabajo en la misma, así como cambios en el código de control como la implementación del efecto integral calculado como el área que abarca la gráfica del error en un período de muestreo. Tanto esquema como códigos pueden ser visualizados en el apartado de anexos.\\
+	
+	Una vez implementado todo, se va a comprobar el funcionamiento del control con la realización de dos trayectorias distintas. La primera de ellas se basa en una función a trozos compuesta de 4 tramos correspondientes a rectas de diferente pendiente; y la segunda consiste en la creación de una trayectoria a través de un interpolador con spline dados 3 puntos a seguir.\\
+	A continuación se mostrarán los resultados obtenidos para cada experimento:
+	
+	\begin{itemize}
+		\item \textbf{Trayectoria lineal}
+		
+	\end{itemize}
+	
+	
 	\subsubsection{Control a una postura}
 \subsection{Ley de control \textit{Persecución pura}}
 
