@@ -123,11 +123,11 @@ Este modelo tiene como ventajas la separación de motores entre traslación y ro
 	La postura del robot, se podría obtener a partir de la aplicación de una matriz de rotación en torno al eje perpendicular al plano de suelo, es decir, respecto al eje Z:
 	\begin{equation}
 		R(\varphi)=
-		\begin{bmatrix}
+		\begin{pmatrix}
 			cos\varphi & sin\varphi & 0 \\
 			-sin\varphi & cos\varphi & 0 \\
 			0 & 0 & 1
-		\end{bmatrix}
+		\end{pmatrix}
 	\end{equation}
 	Además de ello, cabe destacar que, para simplificar el modelado del robot, se han asumido una serie de restricciones cinemáticas en las ruedas como son:
 	\begin{itemize}
@@ -148,19 +148,19 @@ Para el modelo cinemático directo en cuestión, sólo se necesita como dato el 
 	\begin{center}
 		$
 		q=
-		\begin{bmatrix}
+		\begin{pmatrix}
 		x\\
 		y\\
 		\varphi
-		\end{bmatrix}
+		\end{pmatrix}
 		$$
 		\hspace{2cm}
 		$$
 		p=
-		\begin{bmatrix}
+		\begin{pmatrix}
 		\dot{\theta} \\
 		\omega
-		\end{bmatrix}
+		\end{pmatrix}
 		$
 \end{center}
 
@@ -183,11 +183,11 @@ En primer lugar, se definirá $v$ como la componente global de velocidad de desp
 \begin{center}
 		$
 		J=
-		\begin{bmatrix}
+		\begin{pmatrix}
 			R cos(\varphi) && 0\\
 			R sin(\varphi) && 0\\
 			0 && 1
-		\end{bmatrix}
+		\end{pmatrix}
 		$
 \end{center}
 
@@ -195,45 +195,46 @@ La matriz Jacobiana describirá la cinemática directa del sistema relacionando 
 
 	Dicho esto, se puede expresar el modelo cinemático como función de entradas (variables de actuación) y salidas (variables generalizadas):
 	\begin{equation}
-		\begin{bmatrix}
+		\begin{pmatrix}
 		\dot{x}\\
 		\dot{y}\\
 		\dot{\varphi}
-		\end{bmatrix}
+		\end{pmatrix}
 		=
-		\begin{bmatrix}
+		\begin{pmatrix}
 		R cos(\varphi) && 0\\
 		R sin(\varphi) && 0\\
 		0 && 1
-		\end{bmatrix}
-		\begin{bmatrix}
+		\end{pmatrix}
+		\begin{pmatrix}
 		\dot{\theta}\\
 		\omega
-		\end{bmatrix}
+		\end{pmatrix}
 	\end{equation}
 
 	e integrando respecto del tiempo estas matrices, se obtendrá:
 		\begin{equation}
-		\begin{bmatrix}
+		\begin{pmatrix}
 		x\\
 		y\\
 		\varphi
-		\end{bmatrix}
+		\end{pmatrix}
 		=
-		\begin{bmatrix}
+		\begin{pmatrix}
 		x_0\\
 		y_0\\
 		\varphi_0
-		\end{bmatrix}
+		\end{pmatrix}
 		+
-		\begin{bmatrix}
+		\begin{pmatrix}
 		\int_{0}^{t} R\dot{\theta}cos(\varphi)dt\\
 		\int_{0}^{t} R\dot{\theta}sin(\varphi)dt\\
 		\int_{0}^{t} \omega dt
-		\end{bmatrix}
+		\end{pmatrix}
 	\end{equation}
 
 	donde $x_0$, $y_0$ y $\varphi_0$ serán las condiciones iniciales de posición y orientación.\\
+
 	\subsubsection{Esquema de simulación del modelo directo obtenido}
 	Una vez obtenido el modelo cinemático directo se implementará en una función en Matlab, la cuál servirá para modelar el comportamiento del movimiento del robot. Por tanto, el modelo cinemático directo se implementará del siguiente modo:
 	% AQUI VA EL CODIGO DE PRUEBAS MCD -> METIDO EN UN ANEXO
@@ -265,6 +266,8 @@ Cabe destacar cómo se saturarán las variables del modelo: la velocidad angular
 
 \subsubsection{Experimentos realizados al modelo para su verificación}
 Con este código se pueden realizar varios experimentos. Para todos ellos las características comunes serán que partirán de las mismas condiciones iniciales para las variables generalizadas ($x=0, y=0, \varphi=0$) y tendrán las mismas saturaciones, las cuales hemos supuesto como realistas para este tipo de robot.\\
+
+\newpage
 	\begin{itemize}
 
 		\item \textbf{Primer experimento} \\
@@ -276,7 +279,7 @@ Con este código se pueden realizar varios experimentos. Para todos ellos las ca
 		\caption{Movimiento en el plano con actuación de desplazamiento constante y rotativa nula}
 	\end{figure}
 
-\newpage
+
 	\item \textbf{Segundo experimento} \\
 	El siguiente experimento combinará ambas variables de actuación, estableciendo el valor máximo en ambas, por lo que el robot deberá dar vueltas en círculo. Como la velocidad de rotación máxima es de 15 grados/segundo y la simulación dura 30 segundos, el robot deberá dar 1 vuelta y 1/4 de vuelta más. En este y el siguiente experimento, al no constar únicamente de una trayectoria rectilínea, se ha aprovechado para representar, a través de flechas, el vector velocidad de desplazamiento:
 
@@ -286,8 +289,9 @@ Con este código se pueden realizar varios experimentos. Para todos ellos las ca
 		\caption{Movimiento en el plano con actuación de desplazamiento y rotativa constantes}
 	\end{figure}
 
+\newpage
 	\item \textbf{Tercer experimento} \\
-	Ahora se va a realizar el experimento correspondiente a la prueba solicitada para el trabajo donde se ha de suministrar una velocidad de desplazamiento constante y una velocidad de rotación con carácter senoidal. Para ello, se ha introducido una velocidad de desplazamiento de 0.5 radianes/segundo y una senoide de 0.05 Hz de frecuencia y 0.2 radianes/segundo de amplitud:
+	Ahora se va a realizar el experimento correspondiente a la prueba solicitada para el trabajo donde se ha de suministrar una velocidad de desplazamiento constante y una velocidad de rotación con carácter senoidal. Para ello, se ha introducido una velocidad de desplazamiento de 0.5 cm/segundo y una senoide de 0.05 Hz de frecuencia y 0.2 de amplitud:
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=1\textwidth]{exp_MCD_3_1}
@@ -314,10 +318,10 @@ Dicho esto, el modelo cinemático inverso se basa principalmente en la Jacobiana
 En este caso se da que el Jacobiano del modelo directo no es una matriz cuadrada, por lo que no puede tener inversa, así que habrá que realizar la pseudoinversa del mismo. Para ello, no es necesario realizar los cálculos paso por paso, ya que MATLAB posee una función que calcula la pseudoinversa por el método Moore-Penrose llamada $pinv$. Dicho esto, una vez utilizada la función y habiendo simplificado, el resultado es:
 \begin{equation}
 	J^{-1}=
-	\begin{bmatrix}
+	\begin{pmatrix}
 	\dfrac{cos(\varphi)}{R} && \dfrac{sin(\varphi)}{R} && 0\\
 	0 && 0 && 1
-	\end{bmatrix}
+	\end{pmatrix}
 \end{equation}
 
 
@@ -453,12 +457,8 @@ El efecto que se produce al haber saturaciones en ambas actuaciones es una combi
 \newpage
 \section{Control dinámico}
 En lo que a la implementación de un algoritmo de control dinámico sobre el robot concierne, en primer lugar será necesario completar el modelo añadiendo la dinámica de los actuadores.\\
-Los actuadores del robot serán 3 motores de corriente continua, cuya función de transferencia que relaciona la entrada de tensión del motor con la salida en velocidad del mismo se define del siguiente modo:
-\begin{equation}
-	G(s)=\frac{v(s)}{u(s)}=\frac{K}{\tau s+1}
-\end{equation}
-Será necesario definir el valor de la ganancia de la función de transferencia y la constante de tiempo, los cuales se obtendrán experimentalmente y unificarán toda la dinámica del motor, es decir, momento de inercia del motor, coeficiente de fricción viscosa, constante de fuerza contra-electromotriz, etcétera.\\
-Debido a la falta de tiempo no se ha llegado a implementar dicha dinámica en los motores, lo cual no hace que lo siguiente sea inválido, si no que habría que ajustar los controladores de otra forma.
+Aunque típicamente se ha modelado la dinámica de un sistema en la forma de una función de transferencia que relaciona los incrementos de la entrada del motor con incrementos de velocidad, en este problema, se han modelado los actuadores añadiendo las saturaciones en velocidades, tanto de desplazamiento como lineal, analogas a un robot real. \\
+Estas saturaciones serán las que ya se comentaron anteriormente, es decir, se saturará la velocidad de desplazamiento a $=v \pm 30 cm/seg$ y la velocidad de orientacion a $\omega= \pm 15º/seg$.
 \subsection{Implementación de diversos algoritmos de control}
 	\subsubsection{Control a un punto}
 	En este apartado se va a realizar el control de movimiento a un punto, interesando únicamente que el robot consiga alcanzar dicho objetivo, sin importar orientación y sin restricciones temporales.\\
@@ -476,9 +476,10 @@ Debido a la falta de tiempo no se ha llegado a implementar dicha dinámica en lo
 	
 	Dicha ley de control proporcional se ha implementado en una función de MATLAB a la que se le introducen las referencias de posición así como la realimentación de posiciones y orientación actuales, y se le saca las velocidades de desplazamiento y rotación que han de ser aplicadas al robot.\\
 	
+\newpage
 	Para la comprobación de este controlador se ha realizado un script de pruebas donde se pueden introducir los valores de $(x^*,y^*)$ y decidir si el robot, en la posición inicial que parte de (0,0), va a estar orientado hacia el punto objetivo o no, en cuyo caso la variable $\varphi$ valdrá también 0.\\
 	Se mostrarán entonces, a continuación, los resultados obtenidos con la introducción de distintos puntos objetivos:\\
-	\newpage
+	
 	\begin{itemize}
 		\item \textbf{Punto objetivo (0,5) sin preorientación}
 		\begin{figure}[h!]
@@ -517,59 +518,62 @@ Debido a la falta de tiempo no se ha llegado a implementar dicha dinámica en lo
 			\includegraphics[width=1\textwidth]{control_punto_2_3}
 			\caption{Velocidades a lo largo del tiempo de la trayectoria (arriba $\dot{\theta}$ y abajo $\omega$)}
 		\end{figure}
-	
-	Este caso es igual que el anterior pero habiendo realizado preorientación en la posición inicial hacia el punto objetivo. Es por esto que el robot únicamente deberá seguir una línea recta, puesto que ya se encuentra orientado y únicamente hará falta que actúe la variable de velocidad de desplazamiento $\dot{\theta}$.
-	\end{itemize}
+		\end{itemize}	
+Este caso es igual que el anterior pero habiendo realizado preorientación en la posición inicial hacia el punto objetivo. Es por esto que el robot únicamente deberá seguir una línea recta, puesto que ya se encuentra orientado y únicamente hará falta que actúe la variable de velocidad de desplazamiento $\dot{\theta}$.
+
 
 	Se pueden realizar más experimentos pero éstos no dan más información, puesto lo único que hay que tener en cuenta al darle dicho punto es que se ha dejado un tiempo de simulación suficiente para que el robot pueda llegar al objetivo y que con las velocidades máximas implementadas es capaz de hacerlo en dicho tiempo.
 
 	
-	
+\newpage	
 	\subsubsection{Control a una línea}
-	En este apartado se va a estudiar el control de seguimiento de una línea por parte del robot. Para ello debemos conocer en primer lugar la recta que se desea seguir, la cual vendrá descrita como $ax+by+c=0$\\
-	Utilizando entonces la ley de control proporcional para el ángulo de orientación, se deberá implementar el control descrito a continuación:
-	\begin{equation}
-	\omega=-K_dd+K_h(\varphi^*-\varphi)
-	\end{equation}
-	donde $K_d$ es la constante de proporción para el control de la distancia a la que se encuentra el robot de la línea a seguir, $K_h$ la constante de proporción para el control de la orientación respecto a la línea, $\varphi^*$ y $\varphi$ los ángulos de orientación de referencia, calculada como $\varphi^*=atan(\frac{-a}{b})$, y actual, y $d$ la distancia del robot a la línea definida como $d=\frac{(a,b,c)\cdot(x,y,1)}{\sqrt{a^2+b^2}}$.\\
+	En este apartado se va a estudiar el control de seguimiento de una línea por parte del robot. Para ello debemos conocer en primer lugar la recta que se desea seguir, la cual vendrá descrita como $ax+by+c=0$.\\
+Utilizando entonces la ley de control proporcional para el ángulo de orientación, se deberá implementar el control descrito a continuación:
+\begin{equation}
+\omega=-K_dd+K_h(\varphi^*-\varphi)
+\end{equation}
+donde $K_d$ es la constante de proporción para el control de la distancia a la que se encuentra el robot de la línea a seguir, $K_h$ la constante de proporción para el control de la orientación respecto a la línea, $\varphi^*$ y $\varphi$ los ángulos de orientación de referencia, calculada como $\varphi^*=atan(\frac{-a}{b})$, y actual, y $d$ la distancia del robot a la línea definida como $d=\frac{(a,b,c)\cdot(x,y,1)}{\sqrt{a^2+b^2}}$.\\
 	Como se puede apreciar en este tipo de control no se controla la velocidad de desplazamiento pues no es necesario, por lo que se le asigna un valor constante de 0.5 rad/s.\\
 	
 	Una vez descrito el funcionamiento del control, implementado en una función de MATLAB donde se han puesto la restricciones de que las líneas siempre avanzarán en X positivo y que no podrán ser verticales para facilitarla implementación del mismo.\\
 	Una vez tenidas en cuenta dichas restricciones, se puede pasar a realizar experimentos que determinen la fiabilidad del control:
 	
 	\begin{itemize}
-		\item \textbf{Recta a seguir con A=2, B=5 y C=3}
-		\begin{figure}[H]
+		\item \textbf{Recta a seguir con A=2, B=5 y C=3}  \\
+		\begin{figure}[h!]
 			\centering
-			\includegraphics[width=1\textwidth]{control_linea_1}
+			\includegraphics[width=.7\textwidth]{control_linea_1}
 			\caption{Trayectoria realizada en control de seguimiento de línea}
 		\end{figure}
-		\begin{figure}[H]
+		\begin{figure}[h!]
 			\centering
-			\includegraphics[width=1\textwidth]{control_linea_1_2}
+			\includegraphics[width=.7\textwidth]{control_linea_1_2}
 			\caption{Velocidades de actuación a lo largo del tiempo de la trayectoria (arriba $\dot{\theta}$ y abajo $\omega$)}
 		\end{figure}
+
 	Se puede observar como el robot se dirige hacia la recta de referencia de la forma más rápida que es capaz con las saturaciones pertinentes. Se puede comprobar esto también observando las gráficas de las velocidades de actuación, ya que la velocidad de rotación comienza saturada y a los 4 segundos cambia de signo para poder comenzar el seguimiento de la recta de forma suave. El robot no comienza a seguir la trayectoria por el principio de la misma debido a que el punto de ésta que ha de seguir va cambiando a lo largo de la simulación.\\
 	
 	\item \textbf{Recta a seguir con A=0, B=1 y C=-2}
-	\begin{figure}[H]
+	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=1\textwidth]{control_linea_2}
+		\includegraphics[width=.8\textwidth]{control_linea_2}
 		\caption{Trayectoria realizada en control de seguimiento de línea}
 	\end{figure}
-	\begin{figure}[H]
+	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=1\textwidth]{control_linea_2_2}
+		\includegraphics[width=.8\textwidth]{control_linea_2_2}
 		\caption{Velocidades de actuación a lo largo del tiempo de la trayectoria (arriba $\dot{\theta}$ y abajo $\omega$)}
 	\end{figure}
 	En este caso se ha optado por hacer el experimento con una linea horizontal. Como se observa el resultado es muy parecido al del experimento anterior, aunque en este caso una vez alcanzada la recta el robot sobrepasa la misma y debe volver a ella. Esto se debe a que el robot llega a dicha recta de referencia con una orientación de casi 90 grados con respecto a la que tiene la trayectoria de 0 grados y, como las variables de actuación se encuentran saturadas, el robot intenta obtener esa orientación pero tarda más de lo debido.
 	\end{itemize}
+
+\newpage
 	\subsubsection{Control a una trayectoria}
 	En este apartado se va a realizar el control de una trayectoria, que, a grandes rasgos, es muy semejante al control de un punto, pues se puede interpretar como una sucesión de puntos en el tiempo.\\
 	En este caso se puede indicar también la distancia $d^*$ a la que se desea que el robot realice el seguimiento de la trayectoria, es decir, que la realice igual pero de forma paralela. Para todo esto se necesita implementar la ley de control proporcional más integral para la velocidad y la ley proporcional para la orientación.\\
 	De esta forma, primero se calcula el error en posición como
 	\begin{equation}
-	e=\sqrt{(x^*-x)^2+(y^*-y)^2}-d^*,
+	e=\sqrt{(x^*-x)^2+(y^*-y)^2}-d^*
 	\end{equation}
 	y, acto seguido, se realiza el control proporcional e integral para la velocidad de desplazamiento tal que
 	\begin{equation}
@@ -585,31 +589,34 @@ Debido a la falta de tiempo no se ha llegado a implementar dicha dinámica en lo
 	
 	Una vez implementado todo, se va a comprobar el funcionamiento del control con la realización de dos trayectorias distintas. La primera de ellas se basa en una función a trozos compuesta de 4 tramos correspondientes a rectas de diferente pendiente; y la segunda consiste en la creación de una trayectoria a través de un interpolador con spline dados 3 puntos a seguir.\\
 	A continuación se mostrarán los resultados obtenidos para cada experimento:
-	
+
 	\begin{itemize}
 		\item \textbf{Trayectoria lineal}
-		\begin{figure}[H]
+		\begin{figure}[h!]
 			\centering
-			\includegraphics[width=1\textwidth]{control_tray_1}
+			\includegraphics[width=.7\textwidth]{control_tray_1}
 			\caption{Trayectoria realizada en control de seguimiento de trayectoria lineal}
 		\end{figure}
-		\begin{figure}[H]
+	\newpage
+		\begin{figure}[h!]
 			\centering
-			\includegraphics[width=1\textwidth]{control_tray_1_2}
+			\includegraphics[width=.7\textwidth]{control_tray_1_2}
 			\caption{Velocidades de actuación a lo largo del tiempo de la trayectoria (arriba $\dot{\theta}$ y abajo $\omega$)}
 		\end{figure}
-		Como se puede observar, en este caso se ha decidido que el robot siga la trayectoria sin separación alguna, al igual que se puede comprobar que se ha realizado el seguimiento de forma exacta, a excepción de los puntos de cambio de pendiente, donde el robot ha realizado un giro más suave y continuo.\\
-		Observando la gráfica de velocidades se puede concluir que el robot ha conseguido realizar dicho seguimiento a una velocidad de desplazamiento constante y, centrándose en la gráfica de $\omega$ se pueden observar los movimientos debidos al cambio de pendiente, cada cual más pequeño debido a que el cambio de pendiente es menor a cada cambio de recta.\\
+		
+Como se puede observar, en este caso se ha decidido que el robot siga la trayectoria sin separación alguna, al igual que se puede comprobar que se ha realizado el seguimiento de forma exacta, a excepción de los puntos de cambio de pendiente, donde el robot ha realizado un giro más suave y continuo.\\
+Observando la gráfica de velocidades se puede concluir que el robot ha conseguido realizar dicho seguimiento a una velocidad de desplazamiento constante y, centrándose en la gráfica de $\omega$ se pueden observar los movimientos debidos al cambio de pendiente, cada cual más pequeño debido a que el cambio de pendiente es menor a cada cambio de recta.\\
 		
 		\item \textbf{Trayectoria interpolada}
-		\begin{figure}[H]
+		\begin{figure}[h!]
 			\centering
-			\includegraphics[width=1\textwidth]{control_tray_2}
+			\includegraphics[width=.7\textwidth]{control_tray_2}
 			\caption{Trayectoria realizada en control de seguimiento de trayectoria interpolada}
 		\end{figure}
-		\begin{figure}[H]
+\newpage
+		\begin{figure}[h!]
 			\centering
-			\includegraphics[width=1\textwidth]{control_tray_2_2}
+			\includegraphics[width=.7\textwidth]{control_tray_2_2}
 			\caption{Velocidades de actuación a lo largo del tiempo de la trayectoria (arriba $\dot{\theta}$ y abajo $\omega$)}
 		\end{figure}
 		En este experimento se puede observar como el robot es capaz de seguir la trayectoria generada a través de la interpolación con spline de 3 puntos.\\
@@ -642,12 +649,12 @@ Debido a la falta de tiempo no se ha llegado a implementar dicha dinámica en lo
 	\newpage
 	\begin{itemize}
 		\item \textbf{Control de postura con $x^*=10$, $y^*=-10$ y $\varphi^*=-pi$}
-		\begin{figure}[H]
+		\begin{figure}[h!]
 			\centering
 			\includegraphics[width=1\textwidth]{control_postura_1}
 			\caption{Trayectoria realizada en control de postura}
 		\end{figure}
-		\begin{figure}[H]
+		\begin{figure}[h!]
 			\centering
 			\includegraphics[width=1\textwidth]{control_postura_1_2}
 			\caption{Velocidades de actuación a lo largo del tiempo de la trayectoria (arriba $\dot{\theta}$ y abajo $\omega$)}
@@ -656,12 +663,12 @@ Debido a la falta de tiempo no se ha llegado a implementar dicha dinámica en lo
 		Así pues se observa una saturación en la velocidad de desplazamiento durante la mayor parte del recorrido y a su vez un decremento antes de llegar al mismo, lo que corrobora dicho funcionamiento.
 		\newpage
 		\item \textbf{Control de postura con $x^*=5$, $y^*=10$ y $\varphi^*=pi/2$}
-		\begin{figure}[H]
+		\begin{figure}[h!]
 			\centering
 			\includegraphics[width=1\textwidth]{control_postura_2}
 			\caption{Trayectoria realizada en control de postura}
 		\end{figure}
-		\begin{figure}[H]
+		\begin{figure}[h!]
 			\centering
 			\includegraphics[width=1\textwidth]{control_postura_2_2}
 			\caption{Velocidades de actuación a lo largo del tiempo de la trayectoria (arriba $\dot{\theta}$ y abajo $\omega$)}
